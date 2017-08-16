@@ -87,7 +87,7 @@ $(SHARED3):
 
 endif  # PLATFORM_SHARED_EXT
 
-all: $(SHARED) $(LIBRARY)
+all: $(SHARED) $(LIBRARY) $(MEMENVLIBRARY)
 
 check: all $(PROGRAMS) $(TESTS)
 	for t in $(TESTS); do echo "***** Running $$t"; ./$$t || exit 1; done
@@ -99,6 +99,10 @@ clean:
 $(LIBRARY): $(LIBOBJECTS)
 	rm -f $@
 	$(AR) -rs $@ $(LIBOBJECTS)
+
+$(MEMENVLIBRARY): $(MEMENVOBJECTS)
+	rm -f $@
+	$(AR) -rs $@ $(MEMENVOBJECTS)
 
 db_bench: db/db_bench.o $(LIBOBJECTS) $(TESTUTIL)
 	$(CXX) $(LDFLAGS) db/db_bench.o $(LIBOBJECTS) $(TESTUTIL) -o $@ $(LIBS)
@@ -172,9 +176,6 @@ version_set_test: db/version_set_test.o $(LIBOBJECTS) $(TESTHARNESS)
 write_batch_test: db/write_batch_test.o $(LIBOBJECTS) $(TESTHARNESS)
 	$(CXX) $(LDFLAGS) db/write_batch_test.o $(LIBOBJECTS) $(TESTHARNESS) -o $@ $(LIBS)
 
-$(MEMENVLIBRARY) : $(MEMENVOBJECTS)
-	rm -f $@
-	$(AR) -rs $@ $(MEMENVOBJECTS)
 
 memenv_test : helpers/memenv/memenv_test.o $(MEMENVLIBRARY) $(LIBRARY) $(TESTHARNESS)
 	$(CXX) $(LDFLAGS) helpers/memenv/memenv_test.o $(MEMENVLIBRARY) $(LIBRARY) $(TESTHARNESS) -o $@ $(LIBS)

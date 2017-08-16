@@ -26,7 +26,7 @@ USE_IPV6=1
 #    BOOST_INCLUDE_PATH, BOOST_LIB_PATH, BDB_INCLUDE_PATH,
 #    BDB_LIB_PATH, OPENSSL_INCLUDE_PATH and OPENSSL_LIB_PATH respectively
 
-BDB_LIB_SUFFIX=-4.8
+BDB_LIB_SUFFIX=
 
 win32 {
 	BOOST_LIB_SUFFIX=-mgw49-mt-s-1_59
@@ -41,7 +41,18 @@ win32 {
 	QRENCODE_INCLUDE_PATH=C:\deps\qrencode-3.4.4
 	QRENCODE_LIB_PATH=C:\deps\qrencode-3.4.4\.libs
 }
-
+!win32 {
+        OPENSSL_INCLUDE_PATH=/usr/local/opt/openssl/include
+        OPENSSL_LIB_PATH=/usr/local/opt/openssl/lib
+        BDB_INCLUDE_PATH=/usr/local/opt/berkeley-db/include
+        BDB_LIB_PATH=/usr/local/opt/berkeley-db/include/lib
+        QRENCODE_INCLUDE_PATH=/usr/local/opt/qrencode/include
+        QRENCODE_LIB_PATH=/usr/local/opt/qrencode/lib
+        BOOST_INCLUDE_PATH=/usr/local/opt/boost/include
+        BOOST_LIB_PATH=/usr/local/opt/boost/lib
+        MINIUPNPC_INCLUDE_PATH=/usr/local/opt/miniupnpc/include
+        MINIUPNPC_LIB_PATH=/usr/local/opt/miniupnpc/lib
+}
 
 
 OBJECTS_DIR = build
@@ -51,6 +62,7 @@ UI_DIR = build
 # use: qmake "RELEASE=1"
 contains(RELEASE, 1) {
     # Mac: compile for maximum compatibility (10.5, 32-bit)
+    #macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.5 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk
     macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.5 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.5.sdk
     macx:QMAKE_CFLAGS += -mmacosx-version-min=10.5 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.5.sdk
     macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.5 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.5.sdk
@@ -58,6 +70,9 @@ contains(RELEASE, 1) {
     !win32:!macx {
         # Linux: static link and extra security (see: https://wiki.debian.org/Hardening)
         LIBS += -Wl,-Bstatic -Wl,-z,relro -Wl,-z,now
+
+#        LIBS += -Wl,-Bstatic
+# ref...
     }
 }
 
@@ -130,14 +145,15 @@ INCLUDEPATH += src/leveldb/include src/leveldb/helpers
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
 !win32 {
     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
-    genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT="$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE" libleveldb.a libmemenv.a
+    genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE)
+#OPT="$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE" libleveldb.a libmemenv.a
 } else {
     # make an educated guess about what the ranlib command is called
     isEmpty(QMAKE_RANLIB) {
         QMAKE_RANLIB = $$replace(QMAKE_STRIP, strip, ranlib)
     }
     LIBS += -lshlwapi 
-    ###genleveldb.commands = cd \"$$PWD\"/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a && $$QMAKE_RANLIB \"$$PWD\"/src/leveldb/libleveldb.a && $$QMAKE_RANLIB \"$$PWD\"/src/leveldb/libmemenv.a
+    genleveldb.commands = cd \"$$PWD\"/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a && $$QMAKE_RANLIB \"$$PWD\"/src/leveldb/libleveldb.a && $$QMAKE_RANLIB \"$$PWD\"/src/leveldb/libmemenv.a
 }
 genleveldb.target = $$PWD/src/leveldb/libleveldb.a
 genleveldb.depends = FORCE
@@ -480,7 +496,8 @@ macx:QMAKE_INFO_PLIST = share/qt/Info.plist
 # Set libraries and includes at end, to use platform-defined defaults if not overridden
 INCLUDEPATH += $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH
 LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
-LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
+LIBS += -lssl -lcrypto
+#-ldb_cxx$$BDB_LIB_SUFFIX
 # -lgdi32 has to happen after -lcrypto (see  #681)
 win32:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32
 LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX

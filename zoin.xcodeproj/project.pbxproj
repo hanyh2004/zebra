@@ -4659,6 +4659,19 @@
 			isa = PBXSourcesBuildPhase;
 			name = "Build Sources";
 		};
+		C9D3C22C77FC03F204E72344 = {
+			isa = PBXFileReference;
+			name = "miniupnpc";
+			path = "/usr/local/Cellar/miniupnpc/2.0.20170509/lib/libminiupnpc.16.dylib";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		10D70033FCBDD417B835CA61 = {
+			fileRef = "C9D3C22C77FC03F204E72344";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		BC52FAE3CF80A871217A111D = {
 			isa = PBXFileReference;
 			name = "Foundation.framework";
@@ -4715,6 +4728,97 @@
 			settings = {
 			};
 		};
+		ED764ED64AEAC1F745593780 = {
+			isa = PBXFileReference;
+			name = "ssl";
+			path = "/usr/local/Cellar/openssl/1.0.2l/lib/libssl.1.0.0.dylib";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		69EA39753671D305E2678DD3 = {
+			fileRef = "ED764ED64AEAC1F745593780";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		E300B6F5734C48EA8958850E = {
+			isa = PBXFileReference;
+			name = "crypto";
+			path = "/usr/local/Cellar/openssl/1.0.2l/lib/libcrypto.1.0.0.dylib";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		2B7F3D87A763B2942724FFB3 = {
+			fileRef = "E300B6F5734C48EA8958850E";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		BBA66DAE3667314956541D3C = {
+			isa = PBXFileReference;
+			name = "boost_system-mt";
+			path = "/usr/local/Cellar/boost/1.64.0_1/lib/libboost_system-mt.dylib";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		CF95A69A91DABBC92908EF10 = {
+			fileRef = "BBA66DAE3667314956541D3C";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		0B6727B725C6E3BF24AE7808 = {
+			isa = PBXFileReference;
+			name = "boost_filesystem-mt";
+			path = "/usr/local/Cellar/boost/1.64.0_1/lib/libboost_filesystem-mt.dylib";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		B206A62E2A02975936C6AD62 = {
+			fileRef = "0B6727B725C6E3BF24AE7808";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		037EE2BAD0CA2B5EAF7925BD = {
+			isa = PBXFileReference;
+			name = "boost_program_options-mt";
+			path = "/usr/local/Cellar/boost/1.64.0_1/lib/libboost_program_options-mt.dylib";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		1D930403ECB4C2B498A7D8F3 = {
+			fileRef = "037EE2BAD0CA2B5EAF7925BD";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		2C89BAA95913C122A663F205 = {
+			isa = PBXFileReference;
+			name = "boost_thread-mt";
+			path = "/usr/local/Cellar/boost/1.64.0_1/lib/libboost_thread-mt.dylib";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		F6563F7E2E40D1DD6BD6EF73 = {
+			fileRef = "2C89BAA95913C122A663F205";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		35E7A35EB6C918123AADF992 = {
+			isa = PBXFileReference;
+			name = "boost_chrono-mt";
+			path = "/usr/local/Cellar/boost/1.64.0_1/lib/libboost_chrono-mt.dylib";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		281A369FD96C7EAAFE032FBA = {
+			fileRef = "35E7A35EB6C918123AADF992";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		9B36DA7E32F0304E780E7972 = {
 			isa = PBXFileReference;
 			name = "QtGui.framework";
@@ -4759,10 +4863,18 @@
 		};
 		ED1E82605DD74B483AF3C982 = {
 			children = (
+				"C9D3C22C77FC03F204E72344",
 				"BC52FAE3CF80A871217A111D",
 				"27AE7A480FD6C52FCA80FECD",
 				"821416211D63F190AAAD016A",
 				"D0A1AADFEA73F78641C682A5",
+				"ED764ED64AEAC1F745593780",
+				"E300B6F5734C48EA8958850E",
+				"BBA66DAE3667314956541D3C",
+				"0B6727B725C6E3BF24AE7808",
+				"037EE2BAD0CA2B5EAF7925BD",
+				"2C89BAA95913C122A663F205",
+				"35E7A35EB6C918123AADF992",
 				"9B36DA7E32F0304E780E7972",
 				"7BC2E65A5E699A5E5D834CA2",
 				"B6B9970B86A6C219B0869FE9");
@@ -4775,10 +4887,18 @@
 		2A1043669E6E5A7426EA502A = {
 			buildActionMask = 2147483647;
 			files = (
+				"10D70033FCBDD417B835CA61",
 				"5AAC0D9BBAE5CD615557CD7D",
 				"F9E76E570E10AF14870553A7",
 				"51D4DBF7CB8537BE86EBD055",
 				"9C3DD8DCBC0821F151F42E8D",
+				"69EA39753671D305E2678DD3",
+				"2B7F3D87A763B2942724FFB3",
+				"CF95A69A91DABBC92908EF10",
+				"B206A62E2A02975936C6AD62",
+				"1D930403ECB4C2B498A7D8F3",
+				"F6563F7E2E40D1DD6BD6EF73",
+				"281A369FD96C7EAAFE032FBA",
 				"501667F26B3C1FF6767A7C12",
 				"069D05B0128AE5DC7EE31738",
 				"3826A0833FCB54E86728C6EF");
@@ -4849,19 +4969,13 @@
 						"-L/Library/Frameworks",
 						"-F/Library/Frameworks",
 						"-lqrencode",
-						"-lminiupnpc",
+						"-L/usr/local/opt/miniupnpc/lib",
 						"/Users/hanyouhong/chain/zoin/src/leveldb/libleveldb.a",
 						"/Users/hanyouhong/chain/zoin/src/leveldb/libmemenv.a",
-						"-L/opt/local/lib",
-						"-L/opt/local/lib/db48",
-						"-lssl",
-						"-lcrypto",
-						"-ldb_cxx-4.8",
-						"-lboost_system-mt",
-						"-lboost_filesystem-mt",
-						"-lboost_program_options-mt",
-						"-lboost_thread-mt",
-						"-lboost_chrono-mt");
+						"-L/usr/local/opt/boost/lib",
+						"-L/usr/local/opt/berkeley-db/include/lib",
+						"-L/usr/local/opt/openssl/lib",
+						"-L/usr/local/opt/qrencode/lib");
 				DYLIB_CURRENT_VERSION = "0.8.7";
 				DYLIB_COMPATIBILITY_VERSION = "0.8";
 				MACOSX_DEPLOYMENT_TARGET = "10.4";
@@ -4920,10 +5034,13 @@
 					"src",
 					"src/json",
 					"src/qt",
+					"/usr/local/Cellar/miniupnpc/2.0.20170509/include",
 					"src/leveldb/include",
 					"src/leveldb/helpers",
-					"/opt/local/include",
-					"/opt/local/include/db48",
+					"/usr/local/Cellar/boost/1.64.0_1/include",
+					"/usr/local/Cellar/berkeley-db@4/4.8.30/include",
+					"/usr/local/Cellar/openssl/1.0.2l/include",
+					"/usr/local/Cellar/qrencode/3.4.4/include",
 					"build",
 					"build",
 					"/usr/local/include",
@@ -4931,15 +5048,23 @@
 					"/usr/local/Qt4.8/mkspecs/macx-xcode");
 				LIBRARY_SEARCH_PATHS = (
 					"/Library/Frameworks",
+					"/usr/local/opt/miniupnpc/lib",
 					"/System/Library/Frameworks/",
-					"/opt/local/lib",
-					"/opt/local/lib/db48");
+					"/usr/local/opt/boost/lib",
+					"/usr/local/opt/berkeley-db/include/lib",
+					"/usr/local/opt/openssl/lib",
+					"/usr/local/opt/qrencode/lib");
 				FRAMEWORK_SEARCH_PATHS = (
 					"/Library/Frameworks",
 					"/Library/Frameworks");
 				INFOPLIST_FILE = "Info.plist";
 				OTHER_CFLAGS = (
 					"-pipe",
+					"-mmacosx-version-min=10.5",
+					"-arch",
+					"x86_64",
+					"-isysroot",
+					"/Developer/SDKs/MacOSX10.5.sdk",
 					"-g",
 					"-pthread",
 					"-Wall",
@@ -4962,6 +5087,11 @@
 					"-DQT_SHARED");
 				OTHER_CPLUSPLUSFLAGS = (
 					"-pipe",
+					"-mmacosx-version-min=10.5",
+					"-arch",
+					"x86_64",
+					"-isysroot",
+					"/Developer/SDKs/MacOSX10.5.sdk",
 					"-fstack-protector-all",
 					"-U_FORTIFY_SOURCE",
 					"-D_FORTIFY_SOURCE=2",
@@ -5000,19 +5130,13 @@
 						"-L/Library/Frameworks",
 						"-F/Library/Frameworks",
 						"-lqrencode",
-						"-lminiupnpc",
+						"-L/usr/local/opt/miniupnpc/lib",
 						"/Users/hanyouhong/chain/zoin/src/leveldb/libleveldb.a",
 						"/Users/hanyouhong/chain/zoin/src/leveldb/libmemenv.a",
-						"-L/opt/local/lib",
-						"-L/opt/local/lib/db48",
-						"-lssl",
-						"-lcrypto",
-						"-ldb_cxx-4.8",
-						"-lboost_system-mt",
-						"-lboost_filesystem-mt",
-						"-lboost_program_options-mt",
-						"-lboost_thread-mt",
-						"-lboost_chrono-mt");
+						"-L/usr/local/opt/boost/lib",
+						"-L/usr/local/opt/berkeley-db/include/lib",
+						"-L/usr/local/opt/openssl/lib",
+						"-L/usr/local/opt/qrencode/lib");
 				ARCHS = "x86_64";
 				OBJROOT = "build/";
 			};
@@ -5058,10 +5182,13 @@
 					"src",
 					"src/json",
 					"src/qt",
+					"/usr/local/Cellar/miniupnpc/2.0.20170509/include",
 					"src/leveldb/include",
 					"src/leveldb/helpers",
-					"/opt/local/include",
-					"/opt/local/include/db48",
+					"/usr/local/Cellar/boost/1.64.0_1/include",
+					"/usr/local/Cellar/berkeley-db@4/4.8.30/include",
+					"/usr/local/Cellar/openssl/1.0.2l/include",
+					"/usr/local/Cellar/qrencode/3.4.4/include",
 					"build",
 					"build",
 					"/usr/local/include",
@@ -5069,15 +5196,23 @@
 					"/usr/local/Qt4.8/mkspecs/macx-xcode");
 				LIBRARY_SEARCH_PATHS = (
 					"/Library/Frameworks",
+					"/usr/local/opt/miniupnpc/lib",
 					"/System/Library/Frameworks/",
-					"/opt/local/lib",
-					"/opt/local/lib/db48");
+					"/usr/local/opt/boost/lib",
+					"/usr/local/opt/berkeley-db/include/lib",
+					"/usr/local/opt/openssl/lib",
+					"/usr/local/opt/qrencode/lib");
 				FRAMEWORK_SEARCH_PATHS = (
 					"/Library/Frameworks",
 					"/Library/Frameworks");
 				INFOPLIST_FILE = "Info.plist";
 				OTHER_CFLAGS = (
 					"-pipe",
+					"-mmacosx-version-min=10.5",
+					"-arch",
+					"x86_64",
+					"-isysroot",
+					"/Developer/SDKs/MacOSX10.5.sdk",
 					"-g",
 					"-pthread",
 					"-Wall",
@@ -5100,6 +5235,11 @@
 					"-DQT_SHARED");
 				OTHER_CPLUSPLUSFLAGS = (
 					"-pipe",
+					"-mmacosx-version-min=10.5",
+					"-arch",
+					"x86_64",
+					"-isysroot",
+					"/Developer/SDKs/MacOSX10.5.sdk",
 					"-fstack-protector-all",
 					"-U_FORTIFY_SOURCE",
 					"-D_FORTIFY_SOURCE=2",
@@ -5138,19 +5278,13 @@
 						"-L/Library/Frameworks",
 						"-F/Library/Frameworks",
 						"-lqrencode",
-						"-lminiupnpc",
+						"-L/usr/local/opt/miniupnpc/lib",
 						"/Users/hanyouhong/chain/zoin/src/leveldb/libleveldb.a",
 						"/Users/hanyouhong/chain/zoin/src/leveldb/libmemenv.a",
-						"-L/opt/local/lib",
-						"-L/opt/local/lib/db48",
-						"-lssl",
-						"-lcrypto",
-						"-ldb_cxx-4.8",
-						"-lboost_system-mt",
-						"-lboost_filesystem-mt",
-						"-lboost_program_options-mt",
-						"-lboost_thread-mt",
-						"-lboost_chrono-mt");
+						"-L/usr/local/opt/boost/lib",
+						"-L/usr/local/opt/berkeley-db/include/lib",
+						"-L/usr/local/opt/openssl/lib",
+						"-L/usr/local/opt/qrencode/lib");
 				ARCHS = "x86_64";
 				OBJROOT = "build/";
 			};
