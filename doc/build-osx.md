@@ -172,7 +172,7 @@ directory. We have to first create the RPC configuration file, though.
 Run `./zoind` to get the filename where it should be put, or just try these
 commands:
 
-    echo -e "rpcuser=zoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/zoin/zoin.conf"
+    echo -e "rpcuser=zerbarpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/zoin/zoin.conf"
     chmod 600 "/Users/${USER}/Library/Application Support/zoin/zoin.conf"
 
 When next you run it, it will start downloading the blockchain, but it won't

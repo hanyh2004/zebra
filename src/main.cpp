@@ -23,7 +23,7 @@ using namespace boost;
 using namespace numeric;
 
 #if defined(NDEBUG)
-# error "zoin cannot be compiled without assertions."
+# error "zerba cannot be compiled without assertions."
 #endif
 
 #define ZEROCOIN_MODULUS   "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784406918290641249515082189298559149176184502808489120072844992687392807287776735971418347270261896375014971824691165077613379859095700097330459748808428401797429100642458691817195118746121515172654632282216869987549182422433637259085141865462043576798423387184774447920739934236584823824281198163815010674810451660377306056201619676256133844143603833904414952634432190114657544454178424020924616515723350778707749817125772467962926386356373289912154831438167899885040445364023527381951378636564391212010397122822120720357"
@@ -43,15 +43,23 @@ unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
 
-uint256 hashGenesisBlockTest = uint256("0x6283b7fafca969a803f6f539f5e8fb1a4f8a28fc1ec2106ad35b39354a4647e5");
-uint256 hashGenesisBlockMain = uint256("0x23911212a525e3d149fcad6c559c8b17f1e8326a272a75ff9bb315c8d96433ef");
+uint256 hashGenesisBlockTest = uint256("0x58fa5eba780ce59c6465adfbfd58a6396d341d4112282a428967dee569715390");//haven't changed
+uint256 hashGenesisBlockMain = uint256("0x8afd9cdccd6f44fc80271a8ad378b46022758a51c2cbd72e1d41092c779605d3");
+
 uint256 hashGenesisBlock = hashGenesisBlockMain;
 
-uint256 hashGenesisMerkleRootTest = uint256("0x04ff9bc3453a83687a95daf2342eceedac19dd73e356569704533aae02e9d6a9");
-uint256 hashGenesisMerkleRootMain = uint256("0x4f193d83c304ebd3bf2319611cbb84f26af7960f23d06dd243b6c93ebf4d7797");
+//changed by hanyh
+uint256 hashGenesisMerkleRootTest = uint256("0xb12e4e1886ecc29f0f0e6590530c2822e695486fa61b9b70252e9a65a88be689");
+uint256 hashGenesisMerkleRootMain = uint256("0xfad9d6b0eae1d9e96106cde50c634efc41457f75bf77640951263a7d1c79ef97");
+
 uint256 hashGenesisMerkleRoot = hashGenesisMerkleRootMain;
 
-CBigNum bnProofOfWorkLimit(~uint256(0) >> 16); // zoin: starting difficulty is 1 / 2^16
+/**
+SHA256D(Blockherder) < F(nBits)
+
+其中，SHA256D(Blockherder)就是挖矿结果，F(nBits)是难度对应的目标值，两者都是256位，都当成大整数处理，直接对比大小以判断是否符合难度要求。
+*/
+CBigNum bnProofOfWorkLimit(~uint256(0) >> 16); // zerba: starting difficulty is 1 / 2^16
 
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -69,9 +77,9 @@ bool fTxIndex = false;
 unsigned int nCoinCacheSize = 5000;
 
 /** Fees smaller than this (in ztoshi) are considered zero fee (for transaction creation) */
-int64 CTransaction::nMinTxFee = 10000; // 0.0001 zoin
+int64 CTransaction::nMinTxFee = 10000; // 0.0001 zerba
 /** Fees smaller than this (in ztoshi) are considered zero fee (for relaying) */
-int64 CTransaction::nMinRelayTxFee = 10000; // 0.0001 zoin
+int64 CTransaction::nMinRelayTxFee = 10000; // 0.0001 zerba
 
 CMedianFilter<int> cPeerBlockCounts(8, 0); // Amount of blocks that other nodes claim to have
 
@@ -84,7 +92,7 @@ map<uint256, set<uint256> > mapOrphanTransactionsByPrev;
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "Zoin Signed Message:\n";
+const string strMessageMagic = "Zerba Signed Message:\n";
 
 double dHashesPerSec = 0.0;
 int64 nHPSTimerStart = 0;
@@ -1572,6 +1580,10 @@ int64 GetBlockValue(int nHeight, int64 nFees)
 	return nSubsidy + nFees;
 }
 
+/*
+ * src/main.cpp: (How *should* blocks be found and how often difficulty retargets)
+
+ */
 static const int64 nTargetSpacing = 150; // 2.5 minute blocks
 static const int64 nRetargetInterval = 3; // retargets every 3 blocks
 static const int64 nRetargetTimespan = nRetargetInterval * nTargetSpacing; // 7.5 minutes between retargets
@@ -1666,8 +1678,9 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits)
         return error("CheckProofOfWork() : nBits below minimum work");
 
     // Check proof of work matches claimed amount
+    printf("CheckProofOfWork: %s \t %s \n",hash.ToString().c_str(),bnTarget.getuint256().ToString().c_str());
     if (hash > bnTarget.getuint256())
-        return error("CheckProofOfWork() : hash doesn't match nBits");
+        return error("CheckProofOfWork() : hash doesn't match nBits %d",nBits);
 
     return true;
 }
@@ -3587,7 +3600,11 @@ bool InitBlockIndex() {
     if (!fReindex) {
 
         // Genesis block
-        const char* pszTimestamp = "We don’t operate on leaks - Obama 2 Nov 2016";
+        /**
+         * It is customary to also change this line of code to a headline from the day of coin
+         * creation in order to relate it to the block.nTime with some human-readable bit:
+         */
+        const char* pszTimestamp = "It's a new beginning for everyone. Aug 2017";
         CTransaction txNew;
         vector<unsigned char> extraNonce(4);
         unsigned int startBits;
@@ -3597,6 +3614,7 @@ bool InitBlockIndex() {
 		extraNonce[2] = 0x00;
 		extraNonce[3] = 0x00;
 		startBits = bnProofOfWorkLimit.GetCompact();
+
 
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -3610,20 +3628,64 @@ bool InitBlockIndex() {
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 2;
-        block.nTime    = 1478117691;
+        block.nTime    = 1503124597;
+        //1478117691;
         block.nBits    = startBits;
-        block.nNonce   = 104780;
+        block.nNonce   = 17702;
 
         if (fTestNet)
         {
-            block.nTime    = 1478117690;
-            block.nNonce   = 177;
+            printf("init test net\n");
+
+            block.nTime    = 1503124597;
+            block.nNonce   = 25;
+            hashGenesisBlock = hashGenesisBlockTest;
+            hashGenesisMerkleRoot = hashGenesisMerkleRootTest;
+
         }
 		
         uint256 hash = block.GetHash();
-		
+		printf("reindex startBits:%d\n",startBits);
+	    printf("block hash : %s\n", hash.ToString().c_str());
+	    printf("hashMerkleRoot hash : %s\n", block.hashMerkleRoot.ToString().c_str());
+       // block.GetPoWHash()
+
         assert(block.hashMerkleRoot == hashGenesisMerkleRoot);
         assert(hash == hashGenesisBlock);
+
+        // If genesis block hash does not match, then generate new genesis hash.
+//        if (true && block.GetHash() != hashGenesisBlock)
+        if (false && block.GetHash() != hashGenesisBlockTest)
+
+        {
+            printf("Searching for genesis block...\n");
+            // This will figure out a valid hash and Nonce if you're
+            // creating a different genesis block:
+            uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();
+            uint256 thash;
+
+
+            while(1)
+            {
+                thash = block.GetPoWHash(1);
+                if (thash <= hashTarget)
+                    break;
+                if ((block.nNonce & 0xFFF) == 0)
+                {
+                    printf("nonce %08X: hash = %s (target = %s)\n", block.nNonce, thash.ToString().c_str(), hashTarget.ToString().c_str());
+                }
+                ++block.nNonce;
+                if (block.nNonce == 0)
+                {
+                    printf("NONCE WRAPPED, incrementing time\n");
+                    ++block.nTime;
+                }
+            }
+            printf("block.nTime = %u \n", block.nTime);
+            printf("block.nNonce = %u \n", block.nNonce);
+            printf("block.GetHash = %s\n", block.GetHash().ToString().c_str());
+        }
+
 
 		// Start new block file
         try {

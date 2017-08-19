@@ -5,22 +5,22 @@ suites:
 architectures:
 - "amd64"
 packages:
-- "mingw-w64"
-- "g++-mingw-w64"
+#- "mingw-w64"
+#- "g++-mingw-w64"
 - "faketime"
 - "zip"
 reference_datetime: "2011-01-30 00:00:00"
 remotes: []
 files:
 - "boost_1_55_0.tar.bz2"
-- "boost-mingw-gas-cross-compile-2013-03-03.patch"
+#- "boost-mingw-gas-cross-compile-2013-03-03.patch"
 script: |
   # Defines
   INSTALLPREFIX="$OUTDIR/staging/boost"
   HOST=i686-w64-mingw32
   # Input Integrity Check
   echo "fff00023dd79486d444c8e29922f4072e1d451fc5a4d2b6075852ead7f2b7b52  boost_1_55_0.tar.bz2" | shasum -c
-  echo "d2b7f6a1d7051faef3c9cf41a92fa3671d905ef1e1da920d07651a43299f6268  boost-mingw-gas-cross-compile-2013-03-03.patch" | shasum -c
+ # echo "d2b7f6a1d7051faef3c9cf41a92fa3671d905ef1e1da920d07651a43299f6268  boost-mingw-gas-cross-compile-2013-03-03.patch" | shasum -c
 
   mkdir -p "$INSTALLPREFIX"
   tar xjf boost_1_55_0.tar.bz2
@@ -46,7 +46,7 @@ script: |
   # Patch Mirror:   http://wtogami.fedorapeople.org/boost-mingw-gas-cross-compile-2013-03-03.patch
   # Patch Mirror:   http://mindstalk.net/host/boost-mingw-gas-cross-compile-2013-03-03.patch
   # Patch Mirror:   http://rose.makesad.us/~paulproteus/mirrors/boost-mingw-gas-cross-compile-2013-03-03.patch
-  patch -p0 < ../boost-mingw-gas-cross-compile-2013-03-03.patch
+  #patch -p0 < ../boost-mingw-gas-cross-compile-2013-03-03.patch
 
   # Bug Workaround: boost-1.54.0 broke the ability to disable zlib, still broken in 1.55
   # https://svn.boost.org/trac/boost/ticket/9156

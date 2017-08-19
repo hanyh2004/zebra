@@ -130,7 +130,7 @@ OBJS_SSE2= obj/scrypt-sse2.o
 OBJS += $(OBJS_SSE2)
 endif
 
-all: zoind.exe
+all: zerbad.exe
 
 test check: test_zoin.exe FORCE
 	test_zoin.exe
@@ -153,7 +153,7 @@ obj/%.o: %.c
 obj/%.o: %.cpp $(HEADERS)
 	$(CXX) -c $(CFLAGS) -o $@ $<
 
-zoind.exe: $(OBJS:obj/%=obj/%)
+zerbad.exe: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -165,7 +165,7 @@ test_zoin.exe: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ -lboost_unit_test_framework$(BOOST_SUFFIX) $(LIBS)
 
 clean:
-	rm -f zoind.exe test_zoin.exe
+	rm -f zerbad.exe test_zoin.exe
 	rm -f *.o
 	rm -f obj/*.o
 	rm -f obj/libzerocoin/*.o

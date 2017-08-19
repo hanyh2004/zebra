@@ -272,7 +272,7 @@ class CBitcoinAddress : public CBase58Data
 public:
     enum
     {
-        PUBKEY_ADDRESS = 80, // zoin addresses start with Z
+        PUBKEY_ADDRESS = 80, // zerba addresses start with Z, //Set the address first bit here
         SCRIPT_ADDRESS = 7,
         PUBKEY_ADDRESS_TEST = 65, // testnet keys start with T
         SCRIPT_ADDRESS_TEST = 178,

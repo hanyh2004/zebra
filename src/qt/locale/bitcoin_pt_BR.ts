@@ -2196,8 +2196,8 @@ Endereço: %4</translation>
     </message>
     <message>
         <location line="-29"/>
-        <source>Send command to -server or zoind</source>
-        <translation>Enviar comando para -server ou zoind</translation>
+        <source>Send command to -server or zerbad</source>
+        <translation>Enviar comando para -server ou zerbad</translation>
     </message>
     <message>
         <location line="-23"/>
@@ -2221,8 +2221,8 @@ Endereço: %4</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Specify pid file (default: zoind.pid)</source>
-        <translation>Especifique um arquivo de pid (padrão: zoind.pid)</translation>
+        <source>Specify pid file (default: zerbad.pid)</source>
+        <translation>Especifique um arquivo de pid (padrão: zerbad.pid)</translation>
     </message>
     <message>
         <location line="-1"/>
@@ -2299,7 +2299,7 @@ Endereço: %4</translation>
         <source>%s, you must set a rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=zoinrpc
+rpcuser=zerbarpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
@@ -2310,7 +2310,7 @@ for example: alertnotify=echo %%s | mail -s &quot;zoin Alert&quot; admin@foo.com
         <translation>%s, você deve especificar uma senha rpcpassword no arquivo de configuração:⏎
 %s⏎
 É recomendado que você use a seguinte senha aleatória:⏎
-rpcuser=zoinrpc⏎
+rpcuser=zerbarpc⏎
 rpcpassword=%s⏎
 (você não precisa lembrar esta senha)⏎
 O nome de usuário e a senha NÃO PODEM ser os mesmos.⏎

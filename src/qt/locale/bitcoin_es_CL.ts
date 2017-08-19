@@ -2200,8 +2200,8 @@ Dirección: %4</translation>
     </message>
     <message>
         <location line="-29"/>
-        <source>Send command to -server or zoind</source>
-        <translation>Envia comando a zoin lanzado con -server u zoind
+        <source>Send command to -server or zerbad</source>
+        <translation>Envia comando a zoin lanzado con -server u zerbad
 </translation>
     </message>
     <message>
@@ -2230,7 +2230,7 @@ Dirección: %4</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Specify pid file (default: zoind.pid)</source>
+        <source>Specify pid file (default: zerbad.pid)</source>
         <translation>Especifica archivo pid (predeterminado: zoin.pid)
 </translation>
     </message>
@@ -2313,7 +2313,7 @@ Dirección: %4</translation>
         <source>%s, you must set a rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=zoinrpc
+rpcuser=zerbarpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.

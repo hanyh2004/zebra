@@ -2198,8 +2198,8 @@ Address: %4
     </message>
     <message>
         <location line="-29"/>
-        <source>Send command to -server or zoind</source>
-        <translation>发送命令到服务器或者 zoind
+        <source>Send command to -server or zerbad</source>
+        <translation>发送命令到服务器或者 zerbad
 </translation>
     </message>
     <message>
@@ -2228,8 +2228,8 @@ Address: %4
     </message>
     <message>
         <location line="+3"/>
-        <source>Specify pid file (default: zoind.pid)</source>
-        <translation>指定 pid 文件 (默认为 zoind.pid)
+        <source>Specify pid file (default: zerbad.pid)</source>
+        <translation>指定 pid 文件 (默认为 zerbad.pid)
 </translation>
     </message>
     <message>
@@ -2312,7 +2312,7 @@ Address: %4
         <source>%s, you must set a rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=zoinrpc
+rpcuser=zerbarpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
@@ -2323,7 +2323,7 @@ for example: alertnotify=echo %%s | mail -s &quot;zoin Alert&quot; admin@foo.com
         <translation>%s, 您必须在配置文件设置rpcpassword:
  %s
 建议您使用下面的随机密码:
-rpcuser=zoinrpc
+rpcuser=zerbarpc
 rpcpassword=%s
 (您无需记住此密码)
 用户名和密码 必! 须! 不一样。

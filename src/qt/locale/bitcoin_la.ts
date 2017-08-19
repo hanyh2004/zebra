@@ -2196,8 +2196,8 @@ Inscriptio: %4
     </message>
     <message>
         <location line="-29"/>
-        <source>Send command to -server or zoind</source>
-        <translation>Mitte mandatum ad -server vel zoind</translation>
+        <source>Send command to -server or zerbad</source>
+        <translation>Mitte mandatum ad -server vel zerbad</translation>
     </message>
     <message>
         <location line="-23"/>
@@ -2221,7 +2221,7 @@ Inscriptio: %4
     </message>
     <message>
         <location line="+3"/>
-        <source>Specify pid file (default: zoind.pid)</source>
+        <source>Specify pid file (default: zerbad.pid)</source>
         <translation>Specifica pid plicam (praedefinitum: zoin.pid)</translation>
     </message>
     <message>
@@ -2299,7 +2299,7 @@ Inscriptio: %4
         <source>%s, you must set a rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=zoinrpc
+rpcuser=zerbarpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
@@ -2310,7 +2310,7 @@ for example: alertnotify=echo %%s | mail -s &quot;zoin Alert&quot; admin@foo.com
         <translation>%s, necesse est te rpcpassword constituere in plica configurationis:
 %s
 Hortatur te hanc fortuitam tesseram uti:
-rpcuser=zoinrpc
+rpcuser=zerbarpc
 rpcpassword=%s
 (non est necesse te hanc tesseram meminisse)
 Nomen usoris et tessera eadem esse NON POSSUNT.

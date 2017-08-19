@@ -1,4 +1,4 @@
-#define BOOST_TEST_MODULE zoin Test Suite
+#define BOOST_TEST_MODULE zerba Test Suite
 #include <boost/test/unit_test.hpp>
 #include <boost/filesystem.hpp>
 

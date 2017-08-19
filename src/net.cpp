@@ -1112,7 +1112,7 @@ void ThreadMapPort()
             }
         }
 
-        string strDesc = "zoin " + FormatFullVersion();
+        string strDesc = "zerba " + FormatFullVersion();
 
         try {
             while(true) {
@@ -1192,25 +1192,29 @@ void MapPort(bool)
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strMainNetDNSSeed[][2] = {
-	{"seed.zoin.ml", "seed.zoin.ml"},
-	{"zoin.mooo.com", "zoin.mooo.com"},
-	{"seed1.zoin.ml", "seed1.zoin.ml"},
-	{"zoin.crabdance.com", "zoin.crabdance.com"}, 
-	{"seed2.zoin.ml", "seed2.zoin.ml"},
-	{"zoin.ignorelist.com", "zoin.ignorelist.com"}, 
-	{"seed3.zoin.ml", "seed3.zoin.ml"},
-	{"zoin.jumpingcrab.com", "zoin.jumpingcrab.com"},
-	{"seed4.zoin.ml", "seed4.zoin.ml"},
-	{"zoin.chickenkiller.com", "zoin.chickenkiller.com"},	
-	{"seed5.zoin.ml", "seed5.zoin.ml"},
-	{"seed6.zoin.ml", "seed6.zoin.ml"},
+  //  {"seed.sky-ledger.com","seed.sky-ledger.com"},
+	{"localhost", "localhost"},
+//	{"zerba.mooo.com", "zerba.mooo.com"},
+//	{"seed1.zerba.ml", "seed1.zerba.ml"},
+//	{"zerba.crabdance.com", "zerba.crabdance.com"},
+//	{"seed2.zerba.ml", "seed2.zerba.ml"},
+//	{"zerba.ignorelist.com", "zerba.ignorelist.com"},
+//	{"seed3.zerba.ml", "seed3.zerba.ml"},
+//	{"zerba.jumpingcrab.com", "zerba.jumpingcrab.com"},
+//	{"seed4.zerba.ml", "seed4.zerba.ml"},
+//	{"zerba.chickenkiller.com", "zerba.chickenkiller.com"},
+//	{"seed5.zerba.ml", "seed5.zerba.ml"},
+//	{"seed6.zerba.ml", "seed6.zerba.ml"},
     {NULL, NULL}
 };
 
 
 static const char *strTestNetDNSSeed[][2] = {
-    {"zointest.mooo.com", "zointest.mooo.com"},
-    {"testseed.zoin.tech", "testseed.zoin.tech"},
+        //{"seed.sky-ledger.com","seed.sky-ledger.com"},
+        {"localhost","localhost"},
+
+//    {"zointest.mooo.com", "zointest.mooo.com"},
+  //  {"testseed.zerba.tech", "testseed.zerba.tech"},
     {NULL, NULL}
 };
 
@@ -1223,11 +1227,13 @@ void ThreadDNSAddressSeed()
     printf("Loading addresses from DNS seeds (could take a while)\n");
 
     for (unsigned int seed_idx = 0; strDNSSeed[seed_idx][0] != NULL; seed_idx++) {
+        printf("strDNSSeed %s\n",strDNSSeed[seed_idx][0]);
         if (HaveNameProxy()) {
             AddOneShot(strDNSSeed[seed_idx][1]);
         } else {
             vector<CNetAddr> vaddr;
             vector<CAddress> vAdd;
+
             if (LookupHost(strDNSSeed[seed_idx][1], vaddr))
             {
                 BOOST_FOREACH(CNetAddr& ip, vaddr)
@@ -1691,7 +1697,7 @@ bool BindListenPort(const CService &addrBind, string& strError)
     {
         int nErr = WSAGetLastError();
         if (nErr == WSAEADDRINUSE)
-            strError = strprintf(_("Unable to bind to %s on this computer. zoin is probably already running."), addrBind.ToString().c_str());
+            strError = strprintf(_("Unable to bind to %s on this computer. zerba is probably already running."), addrBind.ToString().c_str());
         else
             strError = strprintf(_("Unable to bind to %s on this computer (bind returned error %d, %s)"), addrBind.ToString().c_str(), nErr, strerror(nErr));
         printf("%s\n", strError.c_str());

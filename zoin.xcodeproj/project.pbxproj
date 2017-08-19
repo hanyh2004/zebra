@@ -4672,6 +4672,32 @@
 			settings = {
 			};
 		};
+		2D30D057A077948456B3FE35 = {
+			isa = PBXFileReference;
+			name = "libleveldb.a";
+			path = "src/leveldb/libleveldb.a";
+			refType = 4;
+			sourceTree = "SOURCE_ROOT";
+		};
+		0E20ADA60AF96DE426FCCAC8 = {
+			fileRef = "2D30D057A077948456B3FE35";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		51C829C6F27BBF588617A122 = {
+			isa = PBXFileReference;
+			name = "libmemenv.a";
+			path = "src/leveldb/libmemenv.a";
+			refType = 4;
+			sourceTree = "SOURCE_ROOT";
+		};
+		C64B60EDDAF55665E8485491 = {
+			fileRef = "51C829C6F27BBF588617A122";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		BC52FAE3CF80A871217A111D = {
 			isa = PBXFileReference;
 			name = "Foundation.framework";
@@ -4819,16 +4845,30 @@
 			settings = {
 			};
 		};
-		9B36DA7E32F0304E780E7972 = {
+		72D65F7126626E5504FE87DB = {
 			isa = PBXFileReference;
-			name = "QtGui.framework";
-			path = "/Library/Frameworks/QtGui.framework";
+			name = "QtDBus.framework";
+			path = "/Library/Frameworks/QtDBus.framework";
 			refType = 0;
 			sourceTree = "<absolute>";
 			lastKnownFileType = "wrapper.framework";
 		};
-		501667F26B3C1FF6767A7C12 = {
-			fileRef = "9B36DA7E32F0304E780E7972";
+		75F2207ECECD02B5142C1392 = {
+			fileRef = "72D65F7126626E5504FE87DB";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8EE92F8FA333C9E415C5B34E = {
+			isa = PBXFileReference;
+			name = "QtXml.framework";
+			path = "/Library/Frameworks/QtXml.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		C2643FEB592DBFD1429BE4E1 = {
+			fileRef = "8EE92F8FA333C9E415C5B34E";
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -4843,6 +4883,20 @@
 		};
 		069D05B0128AE5DC7EE31738 = {
 			fileRef = "7BC2E65A5E699A5E5D834CA2";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		9B36DA7E32F0304E780E7972 = {
+			isa = PBXFileReference;
+			name = "QtGui.framework";
+			path = "/Library/Frameworks/QtGui.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		501667F26B3C1FF6767A7C12 = {
+			fileRef = "9B36DA7E32F0304E780E7972";
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -4864,6 +4918,8 @@
 		ED1E82605DD74B483AF3C982 = {
 			children = (
 				"C9D3C22C77FC03F204E72344",
+				"2D30D057A077948456B3FE35",
+				"51C829C6F27BBF588617A122",
 				"BC52FAE3CF80A871217A111D",
 				"27AE7A480FD6C52FCA80FECD",
 				"821416211D63F190AAAD016A",
@@ -4875,8 +4931,10 @@
 				"037EE2BAD0CA2B5EAF7925BD",
 				"2C89BAA95913C122A663F205",
 				"35E7A35EB6C918123AADF992",
-				"9B36DA7E32F0304E780E7972",
+				"72D65F7126626E5504FE87DB",
+				"8EE92F8FA333C9E415C5B34E",
 				"7BC2E65A5E699A5E5D834CA2",
+				"9B36DA7E32F0304E780E7972",
 				"B6B9970B86A6C219B0869FE9");
 			isa = PBXGroup;
 			name = "External Frameworks and Libraries";
@@ -4888,6 +4946,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				"10D70033FCBDD417B835CA61",
+				"0E20ADA60AF96DE426FCCAC8",
+				"C64B60EDDAF55665E8485491",
 				"5AAC0D9BBAE5CD615557CD7D",
 				"F9E76E570E10AF14870553A7",
 				"51D4DBF7CB8537BE86EBD055",
@@ -4899,8 +4959,10 @@
 				"1D930403ECB4C2B498A7D8F3",
 				"F6563F7E2E40D1DD6BD6EF73",
 				"281A369FD96C7EAAFE032FBA",
-				"501667F26B3C1FF6767A7C12",
+				"75F2207ECECD02B5142C1392",
+				"C2643FEB592DBFD1429BE4E1",
 				"069D05B0128AE5DC7EE31738",
+				"501667F26B3C1FF6767A7C12",
 				"3826A0833FCB54E86728C6EF");
 			isa = PBXFrameworksBuildPhase;
 			name = "Frameworks & Libraries";
@@ -4970,8 +5032,6 @@
 						"-F/Library/Frameworks",
 						"-lqrencode",
 						"-L/usr/local/opt/miniupnpc/lib",
-						"/Users/hanyouhong/chain/zoin/src/leveldb/libleveldb.a",
-						"/Users/hanyouhong/chain/zoin/src/leveldb/libmemenv.a",
 						"-L/usr/local/opt/boost/lib",
 						"-L/usr/local/opt/berkeley-db/include/lib",
 						"-L/usr/local/opt/openssl/lib",
@@ -5030,6 +5090,8 @@
 					"/usr/include/QtNetwork",
 					"/Library/Frameworks/QtGui.framework/Versions/4/Headers",
 					"/usr/include/QtGui",
+					"/Library/Frameworks/QtDBus.framework/Versions/4/Headers",
+					"/usr/include/QtDBus",
 					"/usr/include",
 					"src",
 					"src/json",
@@ -5049,6 +5111,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"/Library/Frameworks",
 					"/usr/local/opt/miniupnpc/lib",
+					"/Users/hanyouhong/chain/zoin/src/leveldb",
 					"/System/Library/Frameworks/",
 					"/usr/local/opt/boost/lib",
 					"/usr/local/opt/berkeley-db/include/lib",
@@ -5060,11 +5123,6 @@
 				INFOPLIST_FILE = "Info.plist";
 				OTHER_CFLAGS = (
 					"-pipe",
-					"-mmacosx-version-min=10.5",
-					"-arch",
-					"x86_64",
-					"-isysroot",
-					"/Developer/SDKs/MacOSX10.5.sdk",
 					"-g",
 					"-pthread",
 					"-Wall",
@@ -5077,21 +5135,18 @@
 					"-DUSE_QRCODE",
 					"-DUSE_UPNP=1",
 					"-DMINIUPNP_STATICLIB",
+					"-DUSE_DBUS",
 					"-DUSE_IPV6=1",
 					"-DHAVE_BUILD_INFO",
 					"-DMAC_OSX",
 					"-DMSG_NOSIGNAL=0",
+					"-DQT_DBUS_LIB",
 					"-DQT_GUI_LIB",
 					"-DQT_NETWORK_LIB",
 					"-DQT_CORE_LIB",
 					"-DQT_SHARED");
 				OTHER_CPLUSPLUSFLAGS = (
 					"-pipe",
-					"-mmacosx-version-min=10.5",
-					"-arch",
-					"x86_64",
-					"-isysroot",
-					"/Developer/SDKs/MacOSX10.5.sdk",
 					"-fstack-protector-all",
 					"-U_FORTIFY_SOURCE",
 					"-D_FORTIFY_SOURCE=2",
@@ -5114,10 +5169,12 @@
 					"-DUSE_QRCODE",
 					"-DUSE_UPNP=1",
 					"-DMINIUPNP_STATICLIB",
+					"-DUSE_DBUS",
 					"-DUSE_IPV6=1",
 					"-DHAVE_BUILD_INFO",
 					"-DMAC_OSX",
 					"-DMSG_NOSIGNAL=0",
+					"-DQT_DBUS_LIB",
 					"-DQT_GUI_LIB",
 					"-DQT_NETWORK_LIB",
 					"-DQT_CORE_LIB",
@@ -5131,8 +5188,6 @@
 						"-F/Library/Frameworks",
 						"-lqrencode",
 						"-L/usr/local/opt/miniupnpc/lib",
-						"/Users/hanyouhong/chain/zoin/src/leveldb/libleveldb.a",
-						"/Users/hanyouhong/chain/zoin/src/leveldb/libmemenv.a",
 						"-L/usr/local/opt/boost/lib",
 						"-L/usr/local/opt/berkeley-db/include/lib",
 						"-L/usr/local/opt/openssl/lib",
@@ -5178,6 +5233,8 @@
 					"/usr/include/QtNetwork",
 					"/Library/Frameworks/QtGui.framework/Versions/4/Headers",
 					"/usr/include/QtGui",
+					"/Library/Frameworks/QtDBus.framework/Versions/4/Headers",
+					"/usr/include/QtDBus",
 					"/usr/include",
 					"src",
 					"src/json",
@@ -5197,6 +5254,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"/Library/Frameworks",
 					"/usr/local/opt/miniupnpc/lib",
+					"/Users/hanyouhong/chain/zoin/src/leveldb",
 					"/System/Library/Frameworks/",
 					"/usr/local/opt/boost/lib",
 					"/usr/local/opt/berkeley-db/include/lib",
@@ -5208,11 +5266,6 @@
 				INFOPLIST_FILE = "Info.plist";
 				OTHER_CFLAGS = (
 					"-pipe",
-					"-mmacosx-version-min=10.5",
-					"-arch",
-					"x86_64",
-					"-isysroot",
-					"/Developer/SDKs/MacOSX10.5.sdk",
 					"-g",
 					"-pthread",
 					"-Wall",
@@ -5225,21 +5278,18 @@
 					"-DUSE_QRCODE",
 					"-DUSE_UPNP=1",
 					"-DMINIUPNP_STATICLIB",
+					"-DUSE_DBUS",
 					"-DUSE_IPV6=1",
 					"-DHAVE_BUILD_INFO",
 					"-DMAC_OSX",
 					"-DMSG_NOSIGNAL=0",
+					"-DQT_DBUS_LIB",
 					"-DQT_GUI_LIB",
 					"-DQT_NETWORK_LIB",
 					"-DQT_CORE_LIB",
 					"-DQT_SHARED");
 				OTHER_CPLUSPLUSFLAGS = (
 					"-pipe",
-					"-mmacosx-version-min=10.5",
-					"-arch",
-					"x86_64",
-					"-isysroot",
-					"/Developer/SDKs/MacOSX10.5.sdk",
 					"-fstack-protector-all",
 					"-U_FORTIFY_SOURCE",
 					"-D_FORTIFY_SOURCE=2",
@@ -5262,10 +5312,12 @@
 					"-DUSE_QRCODE",
 					"-DUSE_UPNP=1",
 					"-DMINIUPNP_STATICLIB",
+					"-DUSE_DBUS",
 					"-DUSE_IPV6=1",
 					"-DHAVE_BUILD_INFO",
 					"-DMAC_OSX",
 					"-DMSG_NOSIGNAL=0",
+					"-DQT_DBUS_LIB",
 					"-DQT_GUI_LIB",
 					"-DQT_NETWORK_LIB",
 					"-DQT_CORE_LIB",
@@ -5279,8 +5331,6 @@
 						"-F/Library/Frameworks",
 						"-lqrencode",
 						"-L/usr/local/opt/miniupnpc/lib",
-						"/Users/hanyouhong/chain/zoin/src/leveldb/libleveldb.a",
-						"/Users/hanyouhong/chain/zoin/src/leveldb/libmemenv.a",
 						"-L/usr/local/opt/boost/lib",
 						"-L/usr/local/opt/berkeley-db/include/lib",
 						"-L/usr/local/opt/openssl/lib",

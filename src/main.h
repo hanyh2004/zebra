@@ -631,6 +631,18 @@ public:
      */
     int64 GetValueIn(CCoinsViewCache& mapInputs) const;
 
+    /*
+     * Total number of Coins ever and Estimated # of Blocks per day)
+     *
+     * You'll need to do some math to figure out your blocks per day
+     * target based on how many coins you want to create over what timespan
+     * and how far apart your blocks are. I'm not doing all the work for you!
+     * This coin is set to give 1 coin blocks every 2 minutes, targeting 720
+     * blocks per day through a maximum of 10,000 coins
+     * which means if mined hard, it will run out of coins in a week's time.
+
+
+     */
     static bool AllowFree(double dPriority)
     {
         // Large (in bytes) low-priority (new, small-coin) transactions
@@ -1540,6 +1552,9 @@ public:
         }
 
         // Check the header
+        printf("LastHeight :%d nBits:%d\n",(LastHeight+1),nBits);
+        print();
+
         if (!::CheckProofOfWork(GetPoWHash(LastHeight + 1), nBits))
             return error("CBlock::ReadFromDisk() : errors in block header");
 

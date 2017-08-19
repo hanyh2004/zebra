@@ -193,12 +193,12 @@ bool AppInit(int argc, char* argv[])
         if (mapArgs.count("-?") || mapArgs.count("--help"))
         {
             // First part of help message is specific to bitcoind / RPC client
-            std::string strUsage = _("zoin version") + " " + FormatFullVersion() + "\n\n" +
+            std::string strUsage = _("zerba version") + " " + FormatFullVersion() + "\n\n" +
                 _("Usage:") + "\n" +
-                  "  zoind [options]                     " + "\n" +
-                  "  zoind [options] <command> [params]  " + _("Send command to -server or zoind") + "\n" +
-                  "  zoind [options] help                " + _("List commands") + "\n" +
-                  "  zoind [options] help <command>      " + _("Get help for a command") + "\n";
+                  "  zerbad [options]                     " + "\n" +
+                  "  zerbad [options] <command> [params]  " + _("Send command to -server or zerbad") + "\n" +
+                  "  zerbad [options] help                " + _("List commands") + "\n" +
+                  "  zerbad [options] help <command>      " + _("Get help for a command") + "\n";
 
             strUsage += "\n" + HelpMessage();
 
@@ -208,7 +208,7 @@ bool AppInit(int argc, char* argv[])
 
         // Command-line RPC
         for (int i = 1; i < argc; i++)
-            if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "zoin:"))
+            if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "zerba:"))
                 fCommandLine = true;
 
         if (fCommandLine)
@@ -311,8 +311,8 @@ std::string HelpMessage()
 {
     string strUsage = _("Options:") + "\n" +
         "  -?                     " + _("This help message") + "\n" +
-        "  -conf=<file>           " + _("Specify configuration file (default: zoin.conf)") + "\n" +
-        "  -pid=<file>            " + _("Specify pid file (default: zoind.pid)") + "\n" +
+        "  -conf=<file>           " + _("Specify configuration file (default: zerba.conf)") + "\n" +
+        "  -pid=<file>            " + _("Specify pid file (default: zerbad.pid)") + "\n" +
         "  -gen                   " + _("Generate coins (default: 0)") + "\n" +
         "  -datadir=<dir>         " + _("Specify data directory") + "\n" +
         "  -dbcache=<n>           " + _("Set database cache size in megabytes (default: 25)") + "\n" +
@@ -679,7 +679,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     if (file) fclose(file);
     static boost::interprocess::file_lock lock(pathLockFile.string().c_str());
     if (!lock.try_lock())
-        return InitError(strprintf(_("Cannot obtain a lock on data directory %s. zoin is probably already running."), strDataDir.c_str()));
+        return InitError(strprintf(_("Cannot obtain a lock on data directory %s. zerba is probably already running."), strDataDir.c_str()));
 
     if (GetBoolArg("-shrinkdebugfile", !fDebug))
         ShrinkDebugFile();
@@ -1160,10 +1160,10 @@ bool AppInit2(boost::thread_group& threadGroup)
                 //InitWarning(msg);
             }
             else if (nLoadWalletRet == DB_TOO_NEW)
-                strErrors << _("Error loading wallet.dat: Wallet requires newer version of zoin") << "\n";
+                strErrors << _("Error loading wallet.dat: Wallet requires newer version of zerba") << "\n";
             else if (nLoadWalletRet == DB_NEED_REWRITE)
             {
-                strErrors << _("Wallet needed to be rewritten: restart zoin to complete") << "\n";
+                strErrors << _("Wallet needed to be rewritten: restart zerba to complete") << "\n";
                 printf("%s", strErrors.str().c_str());
                 return InitError(strErrors.str());
             }
