@@ -7,9 +7,22 @@ QT += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 #DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_THREAD_PROVIDES_GENERIC_SHARED_MUTEX_ON_WIN __NO_SYSTEM_INCLUDES
-QMAKE_CC=gcc
-QMAKE_CXX=g++
+#QMAKE_CC=gcc
+#QMAKE_CXX=g++
 
+QMAKE_MACOSX_DEPLOYMENT_TARGET=10.9
+QMAKE_CXXFLAGS += -std=c++11
+
+macx: {
+    QMAKE_CFLAGS += -stdlib=libstdc++
+    QMAKE_CXXFLAGS += -stdlib=libstdc++
+    QMAKE_LFLAGS += -stdlib=libstdc++
+}
+
+#
+#
+CONFIG += c++11
+#
 CONFIG += no_include_pwd
 CONFIG += thread
 CONFIG += static
@@ -43,15 +56,15 @@ win32 {
 	QRENCODE_INCLUDE_PATH=C:\deps\qrencode-3.4.4
 	QRENCODE_LIB_PATH=C:\deps\qrencode-3.4.4\.libs
 }
-!win32 {
+macx {
         OPENSSL_INCLUDE_PATH=/usr/local/opt/openssl/include
         OPENSSL_LIB_PATH=/usr/local/opt/openssl/lib
         BDB_INCLUDE_PATH=/usr/local/opt/berkeley-db/include
         BDB_LIB_PATH=/usr/local/opt/berkeley-db/include/lib
         QRENCODE_INCLUDE_PATH=/usr/local/opt/qrencode/include
         QRENCODE_LIB_PATH=/usr/local/opt/qrencode/lib
-        BOOST_INCLUDE_PATH=/usr/local/opt/boost/include
-        BOOST_LIB_PATH=/usr/local/opt/boost/lib
+        BOOST_INCLUDE_PATH=/usr/local/opt/boost@1.55/include
+        BOOST_LIB_PATH=/usr/local/opt/boost@1.55/lib
         MINIUPNPC_INCLUDE_PATH=/usr/local/opt/miniupnpc/include
         MINIUPNPC_LIB_PATH=/usr/local/opt/miniupnpc/lib
 }
@@ -65,9 +78,9 @@ UI_DIR = build
 contains(RELEASE, 1) {
     # Mac: compile for maximum compatibility (10.5, 32-bit)
     #macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.5 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk
-    macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.5 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.5.sdk
-    macx:QMAKE_CFLAGS += -mmacosx-version-min=10.5 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.5.sdk
-    macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.5 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.5.sdk
+    macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.9 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.11.sdk
+    macx:QMAKE_CFLAGS += -mmacosx-version-min=10.9 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.11.sdk
+    macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.9 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.11.sdk
 
     !win32:!macx {
         # Linux: static link and extra security (see: https://wiki.debian.org/Hardening)
@@ -93,6 +106,7 @@ win32:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat
 win32:QMAKE_LFLAGS *= -Wl,--large-address-aware -static
 # i686-w64-mingw32
 win32:QMAKE_LFLAGS *= -static-libgcc -static-libstdc++
+macx:QMAKE_LFLAGS *=  -static-libstdc++
 
 # use: qmake "USE_QRCODE=1"
 # libqrencode (http://fukuchi.org/works/qrencode/index.en.html) must be installed for support
