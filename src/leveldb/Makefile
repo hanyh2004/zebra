@@ -21,8 +21,9 @@ CFLAGS += -I. -I./include $(PLATFORM_CCFLAGS) $(OPT)  -pthread
 CXXFLAGS += -I. -I./include $(PLATFORM_CXXFLAGS) $(OPT) -pthread
 
 #for data
-CFLAGS += -stdlib=libstdc++
-LDFLAGS += $(PLATFORM_LDFLAGS)  -stdlib=libstdc++
+#CFLAGS += -stdlib=libstdc++
+LDFLAGS += $(PLATFORM_LDFLAGS)
+#  -stdlib=libstdc++
 
 LIBS += $(PLATFORM_LIBS)
 

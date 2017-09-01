@@ -1193,25 +1193,22 @@ void MapPort(bool)
 // The second name should resolve to a list of seed addresses.
 static const char *strMainNetDNSSeed[][2] = {
   //  {"seed.sky-ledger.com","seed.sky-ledger.com"},
-	{"localhost", "localhost"},
-//	{"zerba.mooo.com", "zerba.mooo.com"},
-//	{"seed1.zerba.ml", "seed1.zerba.ml"},
-//	{"zerba.crabdance.com", "zerba.crabdance.com"},
-//	{"seed2.zerba.ml", "seed2.zerba.ml"},
-//	{"zerba.ignorelist.com", "zerba.ignorelist.com"},
-//	{"seed3.zerba.ml", "seed3.zerba.ml"},
-//	{"zerba.jumpingcrab.com", "zerba.jumpingcrab.com"},
-//	{"seed4.zerba.ml", "seed4.zerba.ml"},
-//	{"zerba.chickenkiller.com", "zerba.chickenkiller.com"},
-//	{"seed5.zerba.ml", "seed5.zerba.ml"},
-//	{"seed6.zerba.ml", "seed6.zerba.ml"},
+//	{"localhost", "localhost"},
+ //   {"localhost", "localhost"},
+   // {"sf1.zcoin.io", "sf1.zcoin.io"},
+    {"node-debian.io", "node-debian.io"},
+    {"node-ubuntu.io", "node-ubuntu.io"},
+    {"node-mac.io", "node-mac.io"},
+//    {"nyc.zcoin.io", "nyc.zcoin.io"},
     {NULL, NULL}
 };
 
 
 static const char *strTestNetDNSSeed[][2] = {
         //{"seed.sky-ledger.com","seed.sky-ledger.com"},
-        {"localhost","localhost"},
+        {"node-debian.io", "node-debian.io"},
+        {"node-ubuntu.io", "node-ubuntu.io"},
+        {"node-mac.io", "node-mac.io"},
 
 //    {"zointest.mooo.com", "zointest.mooo.com"},
   //  {"testseed.zerba.tech", "testseed.zerba.tech"},
@@ -1239,7 +1236,11 @@ void ThreadDNSAddressSeed()
                 BOOST_FOREACH(CNetAddr& ip, vaddr)
                 {
                     int nOneDay = 24*3600;
+
                     CAddress addr = CAddress(CService(ip, GetDefaultPort()));
+                    printf("CNetAddr ip: %s  %s \t port:%d" ,ip.ToString().c_str(), addr.ToString().c_str(), GetDefaultPort());
+
+
                     addr.nTime = GetTime() - 3*nOneDay - GetRand(4*nOneDay); // use a random age between 3 and 7 days old
                     vAdd.push_back(addr);
                     found++;
