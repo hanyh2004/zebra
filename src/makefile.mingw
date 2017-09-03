@@ -21,22 +21,24 @@ USE_UPNP:=1
 USE_IPV6:=1
 
 DEPSDIR?=/C/deps
-BOOST_SUFFIX?=-mgw49-mt-s-1_59
+BOOST_SUFFIX?=-mgw49-mt-s-1_55
 
 INCLUDEPATHS= \
  -I"$(CURDIR)" \
  -I"/c/deps" \
- -I"/c/deps/boost_1_59_0" \
+ -I"/c/deps/boost_1_55_0" \
  -I"/c/deps/db-4.8.30.NC/build_unix" \
- -I"/c/deps/openssl-1.0.2k/include" \
- -I"/c/deps/zoin-master/src"
+ -I"/c/deps/openssl-1.0.2e/include" \
+ -I"/c/deps/miniupnpc" \
+ -I"/c/deps/zerba/src"
 
 LIBPATHS= \
  -L"$(CURDIR)" \
  -L"$(CURDIR)/leveldb" \
- -L"/c/deps/boost_1_59_0/stage/lib" \
+ -L"/c/deps/boost_1_55_0/stage/lib" \
  -L"/c/deps/db-4.8.30.NC/build_unix" \
- -L"/c/deps/openssl-1.0.2k"
+ -L"/c/deps/miniupnpc" \
+ -L"/c/deps/openssl-1.0.2e"
 
 LIBS= \
  -l leveldb \
