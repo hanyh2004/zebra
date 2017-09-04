@@ -30,7 +30,7 @@ INCLUDEPATHS= \
  -I"/c/deps/db-4.8.30.NC/build_unix" \
  -I"/c/deps/openssl-1.0.2e/include" \
  -I"/c/deps/miniupnpc" \
- -I"/c/deps/zerba/src"
+ -I"/c/deps/zebra/src"
 
 LIBPATHS= \
  -L"$(CURDIR)" \
@@ -132,10 +132,10 @@ OBJS_SSE2= obj/scrypt-sse2.o
 OBJS += $(OBJS_SSE2)
 endif
 
-all: zerbad.exe
+all: zebrad.exe
 
-test check: test_zoin.exe FORCE
-	test_zoin.exe
+test check: test_zebra.exe FORCE
+	test_zebra.exe
 
 #
 # LevelDB support
@@ -155,7 +155,7 @@ obj/%.o: %.c
 obj/%.o: %.cpp $(HEADERS)
 	$(CXX) -c $(CFLAGS) -o $@ $<
 
-zerbad.exe: $(OBJS:obj/%=obj/%)
+zebrad.exe: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -163,11 +163,11 @@ TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
 obj-test/%.o: test/%.cpp $(HEADERS)
 	$(CXX) -c $(TESTDEFS) $(CFLAGS) -o $@ $<
 
-test_zoin.exe: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
+test_zebra.exe: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ -lboost_unit_test_framework$(BOOST_SUFFIX) $(LIBS)
 
 clean:
-	rm -f zerbad.exe test_zoin.exe
+	rm -f zebrad.exe test_zebra.exe
 	rm -f *.o
 	rm -f obj/*.o
 	rm -f obj/libzerocoin/*.o
