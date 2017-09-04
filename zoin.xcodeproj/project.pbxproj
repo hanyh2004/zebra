@@ -16,7 +16,7 @@
 			neededFileNames = (
 				);
 			shellPath = "/bin/sh";
-			shellScript = "make\ -C\ /Users/hanyouhong/chain/zoin\ -f\ \'zoin.xcodeproj/qt_makeqmake.mak\'";
+			shellScript = "make\ -C\ /Users/hanyouhong/chain/zerba\ -f\ \'zoin.xcodeproj/qt_makeqmake.mak\'";
 		};
 		8C9D79BA40BF702F01685008 = {
 			isa = PBXFileReference;
@@ -4526,7 +4526,7 @@
 				"2FD44F75EFF0B966B2F1E595",
 				"28AF6761F3792BCB19AA8B88");
 			shellPath = "/bin/sh";
-			shellScript = "make\ -C\ /Users/hanyouhong/chain/zoin\ -f\ \'zoin.xcodeproj/qt_preprocess.mak\'";
+			shellScript = "make\ -C\ /Users/hanyouhong/chain/zerba\ -f\ \'zoin.xcodeproj/qt_preprocess.mak\'";
 		};
 		C29B8785722055ED95EF7B57 = {
 			buildActionMask = 2147483647;
@@ -4780,109 +4780,67 @@
 			settings = {
 			};
 		};
-		BBA66DAE3667314956541D3C = {
+		0A45CBA9F7225F92E5E3B5C5 = {
 			isa = PBXFileReference;
 			name = "boost_system-mt";
-			path = "/usr/local/Cellar/boost/1.64.0_1/lib/libboost_system-mt.dylib";
+			path = "/usr/local/Cellar/boost@1.55/1.55.0_1/lib/libboost_system-mt.dylib";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
-		CF95A69A91DABBC92908EF10 = {
-			fileRef = "BBA66DAE3667314956541D3C";
+		9AF79E184460C42F9583FEEE = {
+			fileRef = "0A45CBA9F7225F92E5E3B5C5";
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		0B6727B725C6E3BF24AE7808 = {
+		C4B46731E61CD839A41837BA = {
 			isa = PBXFileReference;
 			name = "boost_filesystem-mt";
-			path = "/usr/local/Cellar/boost/1.64.0_1/lib/libboost_filesystem-mt.dylib";
+			path = "/usr/local/Cellar/boost@1.55/1.55.0_1/lib/libboost_filesystem-mt.dylib";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
-		B206A62E2A02975936C6AD62 = {
-			fileRef = "0B6727B725C6E3BF24AE7808";
+		EB2F4BF6777A77F0AF3F86B3 = {
+			fileRef = "C4B46731E61CD839A41837BA";
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		037EE2BAD0CA2B5EAF7925BD = {
+		658529A0E191EEDA3368B303 = {
 			isa = PBXFileReference;
 			name = "boost_program_options-mt";
-			path = "/usr/local/Cellar/boost/1.64.0_1/lib/libboost_program_options-mt.dylib";
+			path = "/usr/local/Cellar/boost@1.55/1.55.0_1/lib/libboost_program_options-mt.dylib";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
-		1D930403ECB4C2B498A7D8F3 = {
-			fileRef = "037EE2BAD0CA2B5EAF7925BD";
+		AA1724A7195087EE150B97EF = {
+			fileRef = "658529A0E191EEDA3368B303";
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		2C89BAA95913C122A663F205 = {
+		82DCB0C505180697909FF753 = {
 			isa = PBXFileReference;
 			name = "boost_thread-mt";
-			path = "/usr/local/Cellar/boost/1.64.0_1/lib/libboost_thread-mt.dylib";
+			path = "/usr/local/Cellar/boost@1.55/1.55.0_1/lib/libboost_thread-mt.dylib";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
-		F6563F7E2E40D1DD6BD6EF73 = {
-			fileRef = "2C89BAA95913C122A663F205";
+		A67523E5DBDE5CD3C7A55090 = {
+			fileRef = "82DCB0C505180697909FF753";
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		35E7A35EB6C918123AADF992 = {
+		8E29A55C27092DA74BFC7824 = {
 			isa = PBXFileReference;
 			name = "boost_chrono-mt";
-			path = "/usr/local/Cellar/boost/1.64.0_1/lib/libboost_chrono-mt.dylib";
+			path = "/usr/local/Cellar/boost@1.55/1.55.0_1/lib/libboost_chrono-mt.dylib";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
-		281A369FD96C7EAAFE032FBA = {
-			fileRef = "35E7A35EB6C918123AADF992";
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		72D65F7126626E5504FE87DB = {
-			isa = PBXFileReference;
-			name = "QtDBus.framework";
-			path = "/Library/Frameworks/QtDBus.framework";
-			refType = 0;
-			sourceTree = "<absolute>";
-			lastKnownFileType = "wrapper.framework";
-		};
-		75F2207ECECD02B5142C1392 = {
-			fileRef = "72D65F7126626E5504FE87DB";
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8EE92F8FA333C9E415C5B34E = {
-			isa = PBXFileReference;
-			name = "QtXml.framework";
-			path = "/Library/Frameworks/QtXml.framework";
-			refType = 0;
-			sourceTree = "<absolute>";
-			lastKnownFileType = "wrapper.framework";
-		};
-		C2643FEB592DBFD1429BE4E1 = {
-			fileRef = "8EE92F8FA333C9E415C5B34E";
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		7BC2E65A5E699A5E5D834CA2 = {
-			isa = PBXFileReference;
-			name = "QtCore.framework";
-			path = "/Library/Frameworks/QtCore.framework";
-			refType = 0;
-			sourceTree = "<absolute>";
-			lastKnownFileType = "wrapper.framework";
-		};
-		069D05B0128AE5DC7EE31738 = {
-			fileRef = "7BC2E65A5E699A5E5D834CA2";
+		DE0F1489A19228489824A2BD = {
+			fileRef = "8E29A55C27092DA74BFC7824";
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -4897,6 +4855,20 @@
 		};
 		501667F26B3C1FF6767A7C12 = {
 			fileRef = "9B36DA7E32F0304E780E7972";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		7BC2E65A5E699A5E5D834CA2 = {
+			isa = PBXFileReference;
+			name = "QtCore.framework";
+			path = "/Library/Frameworks/QtCore.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		069D05B0128AE5DC7EE31738 = {
+			fileRef = "7BC2E65A5E699A5E5D834CA2";
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -4926,15 +4898,13 @@
 				"D0A1AADFEA73F78641C682A5",
 				"ED764ED64AEAC1F745593780",
 				"E300B6F5734C48EA8958850E",
-				"BBA66DAE3667314956541D3C",
-				"0B6727B725C6E3BF24AE7808",
-				"037EE2BAD0CA2B5EAF7925BD",
-				"2C89BAA95913C122A663F205",
-				"35E7A35EB6C918123AADF992",
-				"72D65F7126626E5504FE87DB",
-				"8EE92F8FA333C9E415C5B34E",
-				"7BC2E65A5E699A5E5D834CA2",
+				"0A45CBA9F7225F92E5E3B5C5",
+				"C4B46731E61CD839A41837BA",
+				"658529A0E191EEDA3368B303",
+				"82DCB0C505180697909FF753",
+				"8E29A55C27092DA74BFC7824",
 				"9B36DA7E32F0304E780E7972",
+				"7BC2E65A5E699A5E5D834CA2",
 				"B6B9970B86A6C219B0869FE9");
 			isa = PBXGroup;
 			name = "External Frameworks and Libraries";
@@ -4954,15 +4924,13 @@
 				"9C3DD8DCBC0821F151F42E8D",
 				"69EA39753671D305E2678DD3",
 				"2B7F3D87A763B2942724FFB3",
-				"CF95A69A91DABBC92908EF10",
-				"B206A62E2A02975936C6AD62",
-				"1D930403ECB4C2B498A7D8F3",
-				"F6563F7E2E40D1DD6BD6EF73",
-				"281A369FD96C7EAAFE032FBA",
-				"75F2207ECECD02B5142C1392",
-				"C2643FEB592DBFD1429BE4E1",
-				"069D05B0128AE5DC7EE31738",
+				"9AF79E184460C42F9583FEEE",
+				"EB2F4BF6777A77F0AF3F86B3",
+				"AA1724A7195087EE150B97EF",
+				"A67523E5DBDE5CD3C7A55090",
+				"DE0F1489A19228489824A2BD",
 				"501667F26B3C1FF6767A7C12",
+				"069D05B0128AE5DC7EE31738",
 				"3826A0833FCB54E86728C6EF");
 			isa = PBXFrameworksBuildPhase;
 			name = "Frameworks & Libraries";
@@ -4992,7 +4960,7 @@
 			refType = 4;
 			sourceTree = "<Group>";
 		};
-		EA726E16B339A28D322B09B5 = {
+		48B5800F93F15F2A5487A86C = {
 			isa = PBXFileReference;
 			explicitFileType = "wrapper.application";
 			path = "zoin.app";
@@ -5001,12 +4969,12 @@
 		};
 		068F80C7519D0528FB08E821 = {
 			children = (
-				"EA726E16B339A28D322B09B5");
+				"48B5800F93F15F2A5487A86C");
 			isa = PBXGroup;
 			name = "Products";
 			refType = 4;
 		};
-		56F18DDEE82B2FAEBE88BDAD = {
+		EA9175156A3EF6A9BAF4F9DD = {
 			buildPhases = (
 				"D7BA7D76DAB5DD13389D6332",
 				"A0A52A2ADF7A1E2A99738674",
@@ -5022,30 +4990,32 @@
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "";
 				PREBINDING = NO;
-				BUILD_ROOT = "/Users/hanyouhong/chain/zoin";
+				BUILD_ROOT = "/Users/hanyouhong/chain/zerba";
 				OTHER_LDFLAGS = (
 						"-headerpad_max_install_names",
+						"-stdlib=libstdc++",
 						"-fstack-protector-all",
+						"-static-libstdc++",
 						"-all_load",
 						"-pthread",
 						"-L/Library/Frameworks",
 						"-F/Library/Frameworks",
 						"-lqrencode",
 						"-L/usr/local/opt/miniupnpc/lib",
-						"-L/usr/local/opt/boost/lib",
+						"-L/usr/local/opt/boost@1.55/lib",
 						"-L/usr/local/opt/berkeley-db/include/lib",
 						"-L/usr/local/opt/openssl/lib",
 						"-L/usr/local/opt/qrencode/lib");
 				DYLIB_CURRENT_VERSION = "0.8.7";
 				DYLIB_COMPATIBILITY_VERSION = "0.8";
-				MACOSX_DEPLOYMENT_TARGET = "10.4";
+				MACOSX_DEPLOYMENT_TARGET = "10.9";
 				PRODUCT_NAME = "zoin";
 			};
 			conditionalBuildSettings = {
 			};
 			dependencies = (
 				);
-			productReference = "EA726E16B339A28D322B09B5";
+			productReference = "48B5800F93F15F2A5487A86C";
 			shouldUseHeadermap = 1;
 			buildConfigurationList = 17B3380A4D6A7D415E7F2E1E;
 			isa = PBXNativeTarget;
@@ -5090,8 +5060,6 @@
 					"/usr/include/QtNetwork",
 					"/Library/Frameworks/QtGui.framework/Versions/4/Headers",
 					"/usr/include/QtGui",
-					"/Library/Frameworks/QtDBus.framework/Versions/4/Headers",
-					"/usr/include/QtDBus",
 					"/usr/include",
 					"src",
 					"src/json",
@@ -5099,7 +5067,7 @@
 					"/usr/local/Cellar/miniupnpc/2.0.20170509/include",
 					"src/leveldb/include",
 					"src/leveldb/helpers",
-					"/usr/local/Cellar/boost/1.64.0_1/include",
+					"/usr/local/Cellar/boost@1.55/1.55.0_1/include",
 					"/usr/local/Cellar/berkeley-db@4/4.8.30/include",
 					"/usr/local/Cellar/openssl/1.0.2l/include",
 					"/usr/local/Cellar/qrencode/3.4.4/include",
@@ -5111,9 +5079,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"/Library/Frameworks",
 					"/usr/local/opt/miniupnpc/lib",
-					"/Users/hanyouhong/chain/zoin/src/leveldb",
+					"/Users/hanyouhong/chain/zerba/src/leveldb",
 					"/System/Library/Frameworks/",
-					"/usr/local/opt/boost/lib",
+					"/usr/local/opt/boost@1.55/lib",
 					"/usr/local/opt/berkeley-db/include/lib",
 					"/usr/local/opt/openssl/lib",
 					"/usr/local/opt/qrencode/lib");
@@ -5123,6 +5091,7 @@
 				INFOPLIST_FILE = "Info.plist";
 				OTHER_CFLAGS = (
 					"-pipe",
+					"-stdlib=libstdc++",
 					"-g",
 					"-pthread",
 					"-Wall",
@@ -5135,18 +5104,18 @@
 					"-DUSE_QRCODE",
 					"-DUSE_UPNP=1",
 					"-DMINIUPNP_STATICLIB",
-					"-DUSE_DBUS",
 					"-DUSE_IPV6=1",
 					"-DHAVE_BUILD_INFO",
 					"-DMAC_OSX",
 					"-DMSG_NOSIGNAL=0",
-					"-DQT_DBUS_LIB",
 					"-DQT_GUI_LIB",
 					"-DQT_NETWORK_LIB",
 					"-DQT_CORE_LIB",
 					"-DQT_SHARED");
 				OTHER_CPLUSPLUSFLAGS = (
 					"-pipe",
+					"-std=c++11",
+					"-stdlib=libstdc++",
 					"-fstack-protector-all",
 					"-U_FORTIFY_SOURCE",
 					"-D_FORTIFY_SOURCE=2",
@@ -5169,26 +5138,26 @@
 					"-DUSE_QRCODE",
 					"-DUSE_UPNP=1",
 					"-DMINIUPNP_STATICLIB",
-					"-DUSE_DBUS",
 					"-DUSE_IPV6=1",
 					"-DHAVE_BUILD_INFO",
 					"-DMAC_OSX",
 					"-DMSG_NOSIGNAL=0",
-					"-DQT_DBUS_LIB",
 					"-DQT_GUI_LIB",
 					"-DQT_NETWORK_LIB",
 					"-DQT_CORE_LIB",
 					"-DQT_SHARED");
 				OTHER_LDFLAGS = (
 						"-headerpad_max_install_names",
+						"-stdlib=libstdc++",
 						"-fstack-protector-all",
+						"-static-libstdc++",
 						"-all_load",
 						"-pthread",
 						"-L/Library/Frameworks",
 						"-F/Library/Frameworks",
 						"-lqrencode",
 						"-L/usr/local/opt/miniupnpc/lib",
-						"-L/usr/local/opt/boost/lib",
+						"-L/usr/local/opt/boost@1.55/lib",
 						"-L/usr/local/opt/berkeley-db/include/lib",
 						"-L/usr/local/opt/openssl/lib",
 						"-L/usr/local/opt/qrencode/lib");
@@ -5233,8 +5202,6 @@
 					"/usr/include/QtNetwork",
 					"/Library/Frameworks/QtGui.framework/Versions/4/Headers",
 					"/usr/include/QtGui",
-					"/Library/Frameworks/QtDBus.framework/Versions/4/Headers",
-					"/usr/include/QtDBus",
 					"/usr/include",
 					"src",
 					"src/json",
@@ -5242,7 +5209,7 @@
 					"/usr/local/Cellar/miniupnpc/2.0.20170509/include",
 					"src/leveldb/include",
 					"src/leveldb/helpers",
-					"/usr/local/Cellar/boost/1.64.0_1/include",
+					"/usr/local/Cellar/boost@1.55/1.55.0_1/include",
 					"/usr/local/Cellar/berkeley-db@4/4.8.30/include",
 					"/usr/local/Cellar/openssl/1.0.2l/include",
 					"/usr/local/Cellar/qrencode/3.4.4/include",
@@ -5254,9 +5221,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"/Library/Frameworks",
 					"/usr/local/opt/miniupnpc/lib",
-					"/Users/hanyouhong/chain/zoin/src/leveldb",
+					"/Users/hanyouhong/chain/zerba/src/leveldb",
 					"/System/Library/Frameworks/",
-					"/usr/local/opt/boost/lib",
+					"/usr/local/opt/boost@1.55/lib",
 					"/usr/local/opt/berkeley-db/include/lib",
 					"/usr/local/opt/openssl/lib",
 					"/usr/local/opt/qrencode/lib");
@@ -5266,6 +5233,7 @@
 				INFOPLIST_FILE = "Info.plist";
 				OTHER_CFLAGS = (
 					"-pipe",
+					"-stdlib=libstdc++",
 					"-g",
 					"-pthread",
 					"-Wall",
@@ -5278,18 +5246,18 @@
 					"-DUSE_QRCODE",
 					"-DUSE_UPNP=1",
 					"-DMINIUPNP_STATICLIB",
-					"-DUSE_DBUS",
 					"-DUSE_IPV6=1",
 					"-DHAVE_BUILD_INFO",
 					"-DMAC_OSX",
 					"-DMSG_NOSIGNAL=0",
-					"-DQT_DBUS_LIB",
 					"-DQT_GUI_LIB",
 					"-DQT_NETWORK_LIB",
 					"-DQT_CORE_LIB",
 					"-DQT_SHARED");
 				OTHER_CPLUSPLUSFLAGS = (
 					"-pipe",
+					"-std=c++11",
+					"-stdlib=libstdc++",
 					"-fstack-protector-all",
 					"-U_FORTIFY_SOURCE",
 					"-D_FORTIFY_SOURCE=2",
@@ -5312,26 +5280,26 @@
 					"-DUSE_QRCODE",
 					"-DUSE_UPNP=1",
 					"-DMINIUPNP_STATICLIB",
-					"-DUSE_DBUS",
 					"-DUSE_IPV6=1",
 					"-DHAVE_BUILD_INFO",
 					"-DMAC_OSX",
 					"-DMSG_NOSIGNAL=0",
-					"-DQT_DBUS_LIB",
 					"-DQT_GUI_LIB",
 					"-DQT_NETWORK_LIB",
 					"-DQT_CORE_LIB",
 					"-DQT_SHARED");
 				OTHER_LDFLAGS = (
 						"-headerpad_max_install_names",
+						"-stdlib=libstdc++",
 						"-fstack-protector-all",
+						"-static-libstdc++",
 						"-all_load",
 						"-pthread",
 						"-L/Library/Frameworks",
 						"-F/Library/Frameworks",
 						"-lqrencode",
 						"-L/usr/local/opt/miniupnpc/lib",
-						"-L/usr/local/opt/boost/lib",
+						"-L/usr/local/opt/boost@1.55/lib",
 						"-L/usr/local/opt/berkeley-db/include/lib",
 						"-L/usr/local/opt/openssl/lib",
 						"-L/usr/local/opt/qrencode/lib");
@@ -5387,7 +5355,7 @@
 			buildConfigurationList = "CC82A9286117DFED018F418F";
 			projectDirPath = "";
 			targets = (
-				"56F18DDEE82B2FAEBE88BDAD");
+				"EA9175156A3EF6A9BAF4F9DD");
 		};
 	};
 	rootObject = "91B15E841AA80083484172DE";

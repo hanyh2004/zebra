@@ -1085,7 +1085,9 @@ void ThreadMapPort()
 #else
     /* miniupnpc 1.6 */
     int error = 0;
-    devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0,  32 ,&error);
+    devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0,  32 ,&error); //2.0
+    //devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0 ,&error); different version
+
 #endif
 
     struct UPNPUrls urls;
@@ -1196,9 +1198,11 @@ static const char *strMainNetDNSSeed[][2] = {
 //	{"localhost", "localhost"},
  //   {"localhost", "localhost"},
    // {"sf1.zcoin.io", "sf1.zcoin.io"},
-    {"node-debian.io", "node-debian.io"},
-    {"node-ubuntu.io", "node-ubuntu.io"},
-    {"node-mac.io", "node-mac.io"},
+   // {"node-debian.io", "node-debian.io"},
+   // {"node-ubuntu.io", "node-ubuntu.io"},
+   // {"node-mac.io", "node-mac.io"},
+    {"seed.i2easy.com", "seed.i2easy.com"},
+
 //    {"nyc.zcoin.io", "nyc.zcoin.io"},
     {NULL, NULL}
 };
@@ -1206,9 +1210,8 @@ static const char *strMainNetDNSSeed[][2] = {
 
 static const char *strTestNetDNSSeed[][2] = {
         //{"seed.sky-ledger.com","seed.sky-ledger.com"},
-        {"node-debian.io", "node-debian.io"},
-        {"node-ubuntu.io", "node-ubuntu.io"},
-        {"node-mac.io", "node-mac.io"},
+        {"seedtest.i2easy.com", "seedtest.i2easy.com"},
+
 
 //    {"zointest.mooo.com", "zointest.mooo.com"},
   //  {"testseed.zerba.tech", "testseed.zerba.tech"},
@@ -1263,9 +1266,10 @@ void ThreadDNSAddressSeed()
 
 
 
-
+//fallback network node
 unsigned int pnSeed[] =
 {
+        0x76BE2867,0x792A18C7,0xB65CB45C
 };
 
 void DumpAddresses()
