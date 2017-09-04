@@ -20,7 +20,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
 
     // Set current copyright year
     ui->copyrightLabel->setText(
-			   tr("Copyright") + QString(" &copy; ") + tr("2017 The ZoinCoin team (<a href=\"http://zerba.ml\">http://zerba.ml</a>)") + QString("<br>") +
+			   tr("Copyright") + QString(" &copy; ") + tr("2017 The ZoinCoin team (<a href=\"http://zebra.ml\">http://zebra.ml</a>)") + QString("<br>") +
                tr("Copyright") + QString(" &copy; ") + tr("2016 The Zoin developers") + QString("<br>") +
                tr("Copyright") + QString(" &copy; ") + tr("2016 The ZCoin developers") + QString("<br>") +
 			   tr("Copyright") + QString(" &copy; ") + tr("2011-2014 The Zerocoin developers") + QString("<br>") +

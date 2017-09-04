@@ -88,7 +88,7 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
 bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 {
     // return if URI is not valid or is no bitcoin URI
-    if(!uri.isValid() || uri.scheme() != QString("zerba"))
+    if(!uri.isValid() || uri.scheme() != QString("zebra"))
         return false;
 
     SendCoinsRecipient rv;
@@ -143,9 +143,9 @@ bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
     //
     //    Cannot handle this later, because bitcoin:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
-    if(uri.startsWith("zerba://"))
+    if(uri.startsWith("zebra://"))
     {
-        uri.replace(0, 7, "zerba:");
+        uri.replace(0, 7, "zebra:");
     }
     QUrl uriInstance(uri);
     return parseBitcoinURI(uriInstance, out);
@@ -305,7 +305,7 @@ bool ToolTipToRichTextFilter::eventFilter(QObject *obj, QEvent *evt)
 #ifdef WIN32
 boost::filesystem::path static StartupShortcutPath()
 {
-    return GetSpecialFolderPath(CSIDL_STARTUP) / "zerba.lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / "zebra.lnk";
 }
 
 bool GetStartOnSystemStartup()
@@ -387,7 +387,7 @@ boost::filesystem::path static GetAutostartDir()
 
 boost::filesystem::path static GetAutostartFilePath()
 {
-    return GetAutostartDir() / "zerba.desktop";
+    return GetAutostartDir() / "zebra.desktop";
 }
 
 bool GetStartOnSystemStartup()
@@ -502,7 +502,7 @@ HelpMessageBox::HelpMessageBox(QWidget *parent) :
     header = tr("Zoin-Qt") + " " + tr("version") + " " +
         QString::fromStdString(FormatFullVersion()) + "\n\n" +
         tr("Usage:") + "\n" +
-        "  zerba-qt [" + tr("command-line options") + "]                     " + "\n";
+        "  zebra-qt [" + tr("command-line options") + "]                     " + "\n";
 
     coreOptions = QString::fromStdString(HelpMessage());
 

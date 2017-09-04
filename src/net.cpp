@@ -1114,7 +1114,7 @@ void ThreadMapPort()
             }
         }
 
-        string strDesc = "zerba " + FormatFullVersion();
+        string strDesc = "zebra " + FormatFullVersion();
 
         try {
             while(true) {
@@ -1214,7 +1214,7 @@ static const char *strTestNetDNSSeed[][2] = {
 
 
 //    {"zointest.mooo.com", "zointest.mooo.com"},
-  //  {"testseed.zerba.tech", "testseed.zerba.tech"},
+  //  {"testseed.zebra.tech", "testseed.zebra.tech"},
     {NULL, NULL}
 };
 
@@ -1269,7 +1269,7 @@ void ThreadDNSAddressSeed()
 //fallback network node
 unsigned int pnSeed[] =
 {
-        0x76BE2867,0x792A18C7,0xB65CB45C
+       // 0x76BE2867,0x792A18C7,0xB65CB45C
 };
 
 void DumpAddresses()
@@ -1702,7 +1702,7 @@ bool BindListenPort(const CService &addrBind, string& strError)
     {
         int nErr = WSAGetLastError();
         if (nErr == WSAEADDRINUSE)
-            strError = strprintf(_("Unable to bind to %s on this computer. zerba is probably already running."), addrBind.ToString().c_str());
+            strError = strprintf(_("Unable to bind to %s on this computer. zebra is probably already running."), addrBind.ToString().c_str());
         else
             strError = strprintf(_("Unable to bind to %s on this computer (bind returned error %d, %s)"), addrBind.ToString().c_str(), nErr, strerror(nErr));
         printf("%s\n", strError.c_str());

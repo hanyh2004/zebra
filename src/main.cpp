@@ -23,7 +23,7 @@ using namespace boost;
 using namespace numeric;
 
 #if defined(NDEBUG)
-# error "zerba cannot be compiled without assertions."
+# error "zebra cannot be compiled without assertions."
 #endif
 
 #define ZEROCOIN_MODULUS   "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784406918290641249515082189298559149176184502808489120072844992687392807287776735971418347270261896375014971824691165077613379859095700097330459748808428401797429100642458691817195118746121515172654632282216869987549182422433637259085141865462043576798423387184774447920739934236584823824281198163815010674810451660377306056201619676256133844143603833904414952634432190114657544454178424020924616515723350778707749817125772467962926386356373289912154831438167899885040445364023527381951378636564391212010397122822120720357"
@@ -59,7 +59,7 @@ SHA256D(Blockherder) < F(nBits)
 
 其中，SHA256D(Blockherder)就是挖矿结果，F(nBits)是难度对应的目标值，两者都是256位，都当成大整数处理，直接对比大小以判断是否符合难度要求。
 */
-CBigNum bnProofOfWorkLimit(~uint256(0) >> 16); // zerba: starting difficulty is 1 / 2^16
+CBigNum bnProofOfWorkLimit(~uint256(0) >> 16); // zebra: starting difficulty is 1 / 2^16
 
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -77,9 +77,9 @@ bool fTxIndex = false;
 unsigned int nCoinCacheSize = 5000;
 
 /** Fees smaller than this (in ztoshi) are considered zero fee (for transaction creation) */
-int64 CTransaction::nMinTxFee = 10000; // 0.0001 zerba
+int64 CTransaction::nMinTxFee = 10000; // 0.0001 zebra
 /** Fees smaller than this (in ztoshi) are considered zero fee (for relaying) */
-int64 CTransaction::nMinRelayTxFee = 10000; // 0.0001 zerba
+int64 CTransaction::nMinRelayTxFee = 10000; // 0.0001 zebra
 
 CMedianFilter<int> cPeerBlockCounts(8, 0); // Amount of blocks that other nodes claim to have
 
@@ -92,7 +92,7 @@ map<uint256, set<uint256> > mapOrphanTransactionsByPrev;
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "Zerba Signed Message:\n";
+const string strMessageMagic = "Zebra Signed Message:\n";
 
 double dHashesPerSec = 0.0;
 int64 nHPSTimerStart = 0;
@@ -620,10 +620,10 @@ int64 GetFounderReward(int nHeight)
 	return Reward;
 }
 
-static const string FounderAddr1Main = "ZaKoV4coXyHd5z6RS28cxGim1KsmFewr7Z";
-static const string FounderAddr2Main = "ZGfugoWVdSAfMPxfBfTVEYr9rPJQQW6S9s";
-static const string FounderAddr3Main = "Za3XMyvicqeu5EbwdkScFAsFejmUu7QgnG";
-static const string FounderAddr4Main = "ZRxbDJvAjTZtJKfUJg5XSNUKxuNYsxupcY";
+static const string FounderAddr1Main = "ZTxkhgoQ9u93sRfwF5bxJivVkY2gshtmg2";
+static const string FounderAddr2Main = "ZYULD6vs4DTrdiqm2tQXFmqwvoHc4ugcRX";
+static const string FounderAddr3Main = "ZbFB8xQQUa8pvA6f1xhbW2ZkECFx4UveJ5";
+static const string FounderAddr4Main = "ZNe4abXKsCyvhv5F51rZ3tJoCouHotfin3";
 
 static const string FounderAddr1Test = "TJ3ajVegq5fxusVPWQ6CLpxFE8YtwYu1AP";
 static const string FounderAddr2Test = "TNf9HMqrnqXw1EejnbwPVSuejZwbbFSAVn";
