@@ -1,9 +1,10 @@
-zoin 0.8.x BETA
+zebra 0.8.x BETA
 ===============
 
 Copyright (c) 2009-2013 Bitcoin Developers
 Copyright (c) 2014 zcoin Developers
 Copyright (c) 2016 Zoin Developers
+Copyright (c) 2017 Zebra Developers
 
 Distributed under the MIT/X11 software license, see the accompanying
 file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -13,8 +14,8 @@ cryptographic software written by Eric Young ([eay@cryptsoft.com](mailto:eay@cry
 
 Intro
 ---------------------
-zoin is is firstever cryptocurrency in the world that intrgrate Zerocoin extention ( http://zerocoin.org )
-to make transactions in Blockchain truly anonimity and merge mineable with Zoin
+zebra is is firstever cryptocurrency in the world that intrgrate Zerocoin extention ( http://zerocoin.org )
+to make transactions in Blockchain truly anonimity and merge mineable with zebra
 and a free open source peer-to-peer electronic cash system that is
 completely decentralized, without the need for a central server or trusted
 parties.  Users hold the crypto keys to their own money and transact directly
@@ -23,15 +24,15 @@ with each other, with the help of a P2P network to check for double-spending.
 
 Setup
 ---------------------
-You need the Qt4 run-time libraries to run zoin. On Debian or Ubuntu:
+You need the Qt4 run-time libraries to run zebra. On Debian or Ubuntu:
 	`sudo apt-get install libqtgui4`
 
 Unpack the files into a directory and run:
 
-- bin/32/zoin-qt (GUI, 32-bit)
-- bin/32/zoind (headless, 32-bit)
-- bin/64/zoin-qt (GUI, 64-bit)
-- bin/64/zoind (headless, 64-bit)
+- bin/32/zebra-qt (GUI, 32-bit)
+- bin/32/zebrad (headless, 32-bit)
+- bin/64/zebra-qt (GUI, 64-bit)
+- bin/64/zebrad (headless, 64-bit)
 
 Other Pages
 ---------------------
