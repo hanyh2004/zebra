@@ -19,7 +19,7 @@ implement new BOOST_AUTO_TEST_SUITE sections (the makefiles are
 set up to add test/*.cpp to test_zoin automatically).
 
 
-Compiling/running zoin unit tests
+Compiling/running zebra unit tests
 ---------------------------------
 
 Bitcoin-Qt unit tests are in the src/qt/test/ directory; they
@@ -29,7 +29,7 @@ To compile and run the tests:
 
 	qmake bitcoin-qt.pro BITCOIN_QT_TEST=1
 	make
-	./zoin-qt_test
+	./zebra-qt_test
 
 To add more tests, add them to the `src/qt/test/` directory,
 the `src/qt/test/test_main.cpp` file, and bitcoin-qt.pro.

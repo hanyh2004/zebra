@@ -1,7 +1,7 @@
-TOR SUPPORT IN zoin
+TOR SUPPORT IN zebra
 ===================
 
-It is possible to run zoin as a Tor hidden service, and connect to such services.
+It is possible to run zebra as a Tor hidden service, and connect to such services.
 
 The following directions assume you have a Tor proxy running on port 9050. Many distributions
 default to having a SOCKS proxy listening on port 9050, but others may not.
@@ -10,10 +10,10 @@ https://www.torproject.org/docs/faq.html.en#TBBSocksPort for how to properly
 configure Tor.
 
 
-1. Run zoin behind a Tor proxy
+1. Run zebra behind a Tor proxy
 ------------------------------
 
-The first step is running zoin behind a Tor proxy. This will already make all
+The first step is running zebra behind a Tor proxy. This will already make all
 outgoing connections be anonimized, but more is possible.
 
 -socks=5        SOCKS5 supports connecting-to-hostname, which can be used instead
@@ -42,23 +42,23 @@ In a typical situation, this suffices to run behind a Tor proxy:
   ./zoind -proxy=127.0.0.1:9050
 
 
-2. Run a zoin hidden server
+2. Run a zebra hidden server
 ------------------------------
 
 If you configure your Tor system accordingly, it is possible to make your node also
 reachable from the Tor network. Add these lines to your /etc/tor/torrc (or equivalent
 config file):
 
-  HiddenServiceDir /var/lib/tor/zoin-service/
+  HiddenServiceDir /var/lib/tor/zebra-service/
   HiddenServicePort 9333 127.0.0.1:9333
 
 The directory can be different of course, but (both) port numbers should be equal to
 your zoind's P2P listen port (9333 by default).
 
--externalip=X   You can tell zoin about its publicly reachable address using
+-externalip=X   You can tell zebra about its publicly reachable address using
                 this option, and this can be a .onion address. Given the above
                 configuration, you can find your onion address in
-                /var/lib/tor/zoin-service/hostname. Onion addresses are given
+                /var/lib/tor/zebra-service/hostname. Onion addresses are given
                 preference for your node to advertize itself with, for connections
                 coming from unroutable addresses (such as 127.0.0.1, where the
                 Tor proxy typically runs).

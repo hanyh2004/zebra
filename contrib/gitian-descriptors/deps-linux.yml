@@ -1,5 +1,5 @@
 ---
-name: "zoin"
+name: "zebra"
 suites:
 - "precise"
 architectures:
@@ -82,4 +82,4 @@ script: |
   done
   #
   cd $STAGING
-  find include lib bin host | sort | zip -X@ $OUTDIR/zoin-deps-linux${GBUILD_BITS}-gitian-r2.zip
+  find include lib bin host | sort | zip -X@ $OUTDIR/zebra-deps-linux${GBUILD_BITS}-gitian-r2.zip

@@ -1,4 +1,4 @@
-IDI_ICON1 ICON DISCARDABLE "icons/zoin.ico"
+IDI_ICON1 ICON DISCARDABLE "icons/zebra.ico"
 IDI_ICON2 ICON DISCARDABLE "icons/zoin_testnet.ico"
 
 #include <windows.h>             // needed for VERSIONINFO
@@ -20,14 +20,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "zoin"
-            VALUE "FileDescription",    "zoin-qt (OSS GUI client for zoin)"
+            VALUE "CompanyName",        "zebra"
+            VALUE "FileDescription",    "zebra-qt (OSS GUI client for zebra)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "zoin-qt"
+            VALUE "InternalName",       "zebra-qt"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "zoin-qt.exe"
-            VALUE "ProductName",        "zoin-qt"
+            VALUE "OriginalFilename",   "zebra-qt.exe"
+            VALUE "ProductName",        "zebra-qt"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

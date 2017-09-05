@@ -1,5 +1,5 @@
 ---
-name: "zoin-deps"
+name: "zebra-deps"
 suites:
 - "precise"
 architectures:
@@ -98,4 +98,4 @@ script: |
   cd ..
   #
   cd $INSTALLPREFIX
-  zip -r $OUTDIR/zoin-deps-win32-gitian-r3.zip include lib
+  zip -r $OUTDIR/zebra-deps-win32-gitian-r3.zip include lib

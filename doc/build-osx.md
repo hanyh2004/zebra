@@ -26,7 +26,7 @@ Eric Young (eay@cryptsoft.com) and UPnP software written by Thomas Bernard.
 Notes
 -----
 
-See `doc/readme-qt.rst` for instructions on building zoin, the
+See `doc/readme-qt.rst` for instructions on building zebra, the
 graphical user interface.
 
 Tested on OS X 10.5 through 10.8 on Intel processors only. PPC is not
@@ -76,8 +76,8 @@ Installing the dependencies using MacPorts is very straightforward.
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone git@github.com:zoin/zoin.git zoin
-        cd zoin
+        git clone git@github.com:zebra/zebra.git zebra
+        cd zebra
 
 2.  Build zoind:
 
@@ -111,8 +111,8 @@ Rerunning "openssl version" should now return the correct version.
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone git@github.com:zoin/zoin.git zoin
-        cd zoin
+        git clone git@github.com:zebra/zebra.git zebra
+        cd zebra
 
 2.  Modify source in order to pick up the `openssl` library.
 
@@ -134,7 +134,7 @@ Rerunning "openssl version" should now return the correct version.
 Creating a release build
 ------------------------
 
-A zoind binary is not included in the zoin.app bundle. You can ignore
+A zoind binary is not included in the zebra.app bundle. You can ignore
 this section if you are building `zoind` for your own use.
 
 If you are building `zoind` for others, your build machine should be set up
@@ -156,10 +156,10 @@ As of December 2012, the `boost` port does not obey `macosx_deployment_target`.
 Download `http://gavinandresen-bitcoin.s3.amazonaws.com/boost_macports_fix.zip`
 for a fix. Some ports also seem to obey either `build_arch` or
 `macosx_deployment_target`, but not both at the same time. For example, building
-on an OS X 10.6 64-bit machine fails. Official release builds of zoin are
+on an OS X 10.6 64-bit machine fails. Official release builds of zebra are
 compiled on an OS X 10.6 32-bit machine to workaround that problem.
 
-Once dependencies are compiled, creating `zoin.app` is easy:
+Once dependencies are compiled, creating `zebra.app` is easy:
 
     make -f Makefile.osx RELEASE=1
 
@@ -172,8 +172,8 @@ directory. We have to first create the RPC configuration file, though.
 Run `./zoind` to get the filename where it should be put, or just try these
 commands:
 
-    echo -e "rpcuser=zerbarpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/zoin/zoin.conf"
-    chmod 600 "/Users/${USER}/Library/Application Support/zoin/zoin.conf"
+    echo -e "rpcuser=zerbarpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/zebra/zebra.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/zebra/zebra.conf"
 
 When next you run it, it will start downloading the blockchain, but it won't
 output anything while it's doing this. This process may take several hours.
@@ -181,5 +181,5 @@ output anything while it's doing this. This process may take several hours.
 Other commands:
 
     ./zoind --help  # for a list of command-line options.
-    ./zoind -daemon # to start the zoin daemon.
+    ./zoind -daemon # to start the zebra daemon.
     ./zoind help    # When the daemon is running, to get a list of RPC commands

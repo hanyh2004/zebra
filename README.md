@@ -13,7 +13,7 @@ Zoin is the implementation of the Zerocoin protocol ( http://zerocoin.org ) guar
  - Tail subsidy of 10 coins per block after 2 years (~10% per year)
 
 For more information, as well as an immediately useable, binary version of
-the zoin client sofware, see https://github.com/zoincoin/zoin/releases.
+the zebra client sofware, see https://github.com/zoincoin/zebra/releases.
 
 License
 -------
@@ -27,7 +27,7 @@ Development process
 Developers work in their own trees, then submit pull requests when they think
 their feature or bug fix is ready.
 
-If it is a simple/trivial/non-controversial change, then one of the zoin
+If it is a simple/trivial/non-controversial change, then one of the zebra
 development team members simply pulls it.
 
 The patch will be accepted if there is broad consensus that it is a good thing.
@@ -36,7 +36,7 @@ match the project's coding conventions (see `doc/coding.txt`) or are
 controversial.
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/zoincoin/zoin/tags) are created
+completely stable. [Tags](https://github.com/zoincoin/zebra/tags) are created
 regularly to indicate new official, stable release versions of Zoin.
 
 Testing
@@ -53,9 +53,9 @@ Unit tests for the core code are in `src/test/`. To compile and run them:
 
 Unit tests for the GUI code are in `src/qt/test/`. To compile and run them:
 
-    qmake BITCOIN_QT_TEST=1 -o Makefile.test zoin.pro
+    qmake BITCOIN_QT_TEST=1 -o Makefile.test zebra.pro
     make -f Makefile.test
-    ./zoin-qt_test
+    ./zebra-qt_test
 
 Installation
 ------------
