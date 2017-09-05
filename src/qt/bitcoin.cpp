@@ -157,9 +157,9 @@ int main(int argc, char *argv[])
     QApplication::setOrganizationName("zebra");
     QApplication::setOrganizationDomain("zebra.tech");
     if(GetBoolArg("-testnet")) // Separate UI settings for testnet
-        QApplication::setApplicationName("Zoin-Qt-Testnet");
+        QApplication::setApplicationName("Zebra-Qt-Testnet");
     else
-        QApplication::setApplicationName("Zoin-Qt");
+        QApplication::setApplicationName("Zebra-Qt");
 
     // ... then GUI settings:
     OptionsModel optionsModel;

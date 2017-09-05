@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>740</width>
-    <height>491</height>
+    <height>539</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Zoin - Debug window</string>
+   <string>Zebra - Debug window</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
@@ -36,7 +36,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Zoin Core</string>
+          <string>Zerba Core</string>
          </property>
         </widget>
        </item>

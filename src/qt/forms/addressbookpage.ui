@@ -137,6 +137,12 @@
      </item>
      <item>
       <widget class="QPushButton" name="zerocoinMintButton">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
        <property name="text">
         <string>Mint Zerocoin</string>
        </property>

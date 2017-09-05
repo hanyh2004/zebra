@@ -385,7 +385,7 @@ unsigned int LimitOrphanTxSize(unsigned int nMaxOrphans)
 
 bool CTxOut::IsDust() const
 {
-    // Zoin: IsDust() detection disabled, allows any valid dust to be relayed.
+    // Zebra: IsDust() detection disabled, allows any valid dust to be relayed.
     // The fees imposed on each dust txo is considered sufficient spam deterrant. 
     return false;
 }
@@ -1066,7 +1066,7 @@ int64 CTransaction::GetMinFee(unsigned int nBlockSize, bool fAllowFree,
             nMinFee = 0;
     }
 
-    // Zoin
+    // Zebra
     // To limit dust spam, add nBaseFee for each output less than DUST_SOFT_LIMIT
     BOOST_FOREACH(const CTxOut& txout, vout)
         if (txout.nValue < DUST_SOFT_LIMIT)
@@ -2904,7 +2904,7 @@ bool CBlock::CheckBlock(CValidationState &state, int nHeight, bool fCheckPOW, bo
     if (vtx.empty() || vtx.size() > MAX_BLOCK_SIZE || ::GetSerializeSize(*this, SER_NETWORK, PROTOCOL_VERSION) > MAX_BLOCK_SIZE)
         return state.DoS(100, error("CheckBlock() : size limits failed"));
 
-    // Zoin: Special short-term limits to avoid 10,000 BDB lock limit:
+    // Zebra: Special short-term limits to avoid 10,000 BDB lock limit:
     if (GetBlockTime() < 1376568000)  // stop enforcing 15 August 2013 00:00:00
     {
         // Rule is: #unique txids referenced <= 4,500
@@ -3084,7 +3084,7 @@ bool CBlock::AcceptBlock(CValidationState &state, CDiskBlockPos *dbp)
 
 bool CBlockIndex::IsSuperMajority(int minVersion, const CBlockIndex* pstart, unsigned int nRequired, unsigned int nToCheck)
 {
-	// Zoin: temporarily disable v2 block lockin until we are ready for v2 transition
+	// Zebra: temporarily disable v2 block lockin until we are ready for v2 transition
     return false;
     unsigned int nFound = 0;
     for (unsigned int i = 0; i < nToCheck && nFound < nRequired && pstart != NULL; i++)
@@ -5059,7 +5059,7 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// ZoinMiner
+// ZebraMiner
 //
 
 int static FormatHashBlocks(void* pbuffer, unsigned int len)
@@ -5592,7 +5592,7 @@ bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
             return error("AUX POW parent hash %s is not under target %s", auxpow->GetParentBlockHash(nHeight).GetHex().c_str(), hashTarget.GetHex().c_str());
 
         //// debug print
-        printf("ZoinMiner:\n");
+        printf("ZebraMiner:\n");
         printf("AUX proof-of-work found  \n     our hash: %s   \n  parent hash: %s  \n       target: %s\n",
                 hash.GetHex().c_str(),
                 auxpow->GetParentBlockHash(nHeight).GetHex().c_str(),
@@ -5605,7 +5605,7 @@ bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
             return false;
 
         //// debug print
-        printf("ZoinMiner:\n");
+        printf("ZebraMiner:\n");
         printf("proof-of-work found  \n  hash: %s  \ntarget: %s\n", hash.GetHex().c_str(), hashTarget.GetHex().c_str());
     }
     
@@ -5618,7 +5618,7 @@ bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
         LOCK(cs_main);
         if (pblock->hashPrevBlock != hashBestChain)
 		{
-            return error("ZoinMiner : generated block is stale"); 
+            return error("ZebraMiner : generated block is stale");
 		}
 
         // Remove key from key pool
@@ -5633,7 +5633,7 @@ bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
         // Process this block the same as if we had received it from another node
         CValidationState state;
         if (!ProcessBlock(state, NULL, pblock))
-            return error("ZoinMiner : ProcessBlock, block not accepted");
+            return error("ZebraMiner : ProcessBlock, block not accepted");
     }
 
     return true;
@@ -5683,9 +5683,9 @@ CBlockHeader CBlockIndex::GetBlockHeader() const
 
 void static ZoinMiner(CWallet *pwallet)
 {
-    printf("ZoinMiner started\n");
+    printf("ZebraMiner started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("Zoin-Miner");
+    RenameThread("Zebra-Miner");
 
     // Each thread has its own key and counter
     CReserveKey reservekey(pwallet);
@@ -5707,7 +5707,7 @@ void static ZoinMiner(CWallet *pwallet)
         CBlock *pblock = &pblocktemplate->block;
         IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-        printf("Running ZoinMiner with %" PRIszu" transactions in block (%u bytes)\n", pblock->vtx.size(),
+        printf("Running ZebraMiner with %" PRIszu" transactions in block (%u bytes)\n", pblock->vtx.size(),
                ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
         //
@@ -5741,7 +5741,7 @@ void static ZoinMiner(CWallet *pwallet)
 				thash = pblock->GetPoWHash(pindexPrev->nHeight + 1);
 				if (thash == 0)
 				{
-					printf("ZoinMiner() : Out of memory\n");
+					printf("ZebraMiner() : Out of memory\n");
 					throw std::runtime_error("ZoinMiner() : Out of memory");
 				}
 
@@ -5812,12 +5812,12 @@ void static ZoinMiner(CWallet *pwallet)
     } }
     catch (boost::thread_interrupted)
     {
-        printf("ZoinMiner terminated\n");
+        printf("ZebraMiner terminated\n");
         throw;
     }
 	catch (std::exception &e)
 	{
-        printf("ZoinMiner error\n");
+        printf("ZebraMiner error\n");
 	}
 }
 

@@ -4,7 +4,7 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>Про Zoin</source>
+        <source>Про Zebra</source>
         <translation>&amp;О zebra</translation>
     </message>
     <message>

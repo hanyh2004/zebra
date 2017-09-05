@@ -30,6 +30,11 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
     tab(tab)
 {
     ui->setupUi(this);
+    //disable
+    ui->zerocoinMintButton->setHidden(true);
+    ui->zerocoinSpendButton->setHidden(true);
+    ui->zerocoinMintButton->setVisible(false);
+    ui->zerocoinSpendButton->setVisible(false);
 
 #ifdef Q_OS_MAC // Icons on push buttons are very uncommon on Mac
     ui->newAddress->setIcon(QIcon());
