@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = zerba-qt
+TARGET = zebra-qt
 macx:TARGET = "Zerba-Qt"
 VERSION = 0.8.9.6
 INCLUDEPATH += src src/json src/qt
