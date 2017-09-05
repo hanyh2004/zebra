@@ -1,6 +1,6 @@
 TEMPLATE = app
-TARGET = zerba-qt
-macx:TARGET = "zerba-qt"
+TARGET = zebra-qt
+macx:TARGET = "zebra-qt"
 VERSION = 0.8.7.5
 INCLUDEPATH += src src/json src/qt
 QT += core gui network
@@ -43,32 +43,18 @@ USE_IPV6=1
 
 BDB_LIB_SUFFIX=
 
-win32 {
-	BOOST_LIB_SUFFIX=-mgw49-mt-s-1_55
-	BOOST_INCLUDE_PATH=C:/deps/boost_1_55_0
-	BOOST_LIB_PATH=C:/deps/boost_1_55_0/stage/lib
-	BDB_INCLUDE_PATH=C:/deps/db-4.8.30.NC/build_unix
-	BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
-	OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.2e/include
-	OPENSSL_LIB_PATH=C:/deps/openssl-1.0.2e
-	MINIUPNPC_LIB_SUFFIX=-miniupnpc
-	MINIUPNPC_LIB_PATH=C:/deps/miniupnpc
-        MINIUPNPC_INCLUDE_PATH=c:/deps/miniupnpc
-	QRENCODE_INCLUDE_PATH=C:\deps\qrencode-3.4.4
-	QRENCODE_LIB_PATH=C:\deps\qrencode-3.4.4\.libs
-}
-macx {
-        OPENSSL_INCLUDE_PATH=/usr/local/opt/openssl/include
-        OPENSSL_LIB_PATH=/usr/local/opt/openssl/lib
-        BDB_INCLUDE_PATH=/usr/local/opt/berkeley-db/include
-        BDB_LIB_PATH=/usr/local/opt/berkeley-db/include/lib
-        QRENCODE_INCLUDE_PATH=/usr/local/opt/qrencode/include
-        QRENCODE_LIB_PATH=/usr/local/opt/qrencode/lib
-        BOOST_INCLUDE_PATH=/usr/local/opt/boost@1.55/include
-        BOOST_LIB_PATH=/usr/local/opt/boost@1.55/lib
-        MINIUPNPC_INCLUDE_PATH=/usr/local/opt/miniupnpc/include
-        MINIUPNPC_LIB_PATH=/usr/local/opt/miniupnpc/lib
-}
+
+OPENSSL_INCLUDE_PATH=/usr/local/opt/openssl/include
+OPENSSL_LIB_PATH=/usr/local/opt/openssl/lib
+BDB_INCLUDE_PATH=/usr/local/opt/berkeley-db/include
+BDB_LIB_PATH=/usr/local/opt/berkeley-db/include/lib
+QRENCODE_INCLUDE_PATH=/usr/local/opt/qrencode/include
+QRENCODE_LIB_PATH=/usr/local/opt/qrencode/lib
+BOOST_INCLUDE_PATH=/usr/local/opt/boost@1.55/include
+BOOST_LIB_PATH=/usr/local/opt/boost@1.55/lib
+MINIUPNPC_INCLUDE_PATH=/usr/local/opt/miniupnpc/include
+MINIUPNPC_LIB_PATH=/usr/local/opt/miniupnpc/lib
+
 
 
 OBJECTS_DIR = build
@@ -81,15 +67,7 @@ contains(RELEASE, 1) {
     #macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.5 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk
     macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.9 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.11.sdk
     macx:QMAKE_CFLAGS += -mmacosx-version-min=10.9 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.11.sdk
-    macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.9 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.11.sdk
-
-    !win32:!macx {
-        # Linux: static link and extra security (see: https://wiki.debian.org/Hardening)
-        LIBS += -Wl,-Bstatic -Wl,-z,relro -Wl,-z,now
-
-#        LIBS += -Wl,-Bstatic
-# ref...
-    }
+    macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.9 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.11.sdk   
 }
 
 !win32 {
@@ -101,12 +79,6 @@ contains(RELEASE, 1) {
 }
 # for extra security (see: https://wiki.debian.org/Hardening): this flag is GCC compiler-specific
 QMAKE_CXXFLAGS += -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
-# for extra security on Windows: enable ASLR and DEP via GCC linker flags
-win32:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat
-# on Windows: enable GCC large address aware linker flag
-win32:QMAKE_LFLAGS *= -Wl,--large-address-aware -static
-# i686-w64-mingw32
-win32:QMAKE_LFLAGS *= -static-libgcc -static-libstdc++
 macx:QMAKE_LFLAGS *=  -static-libstdc++
 
 # use: qmake "USE_QRCODE=1"
@@ -162,7 +134,7 @@ INCLUDEPATH += src/leveldb/include src/leveldb/helpers
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
 !win32 {
     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
-    genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE)
+    # genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE)
 #OPT="$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE" libleveldb.a libmemenv.a
 } else {
     # make an educated guess about what the ranlib command is called
@@ -404,7 +376,7 @@ SOURCES += src/qt/test/test_main.cpp \
 HEADERS += src/qt/test/uritests.h
 DEPENDPATH += src/qt/test
 QT += testlib
-TARGET = zoin-qt_test
+TARGET = zebra-qt_test
 DEFINES += BITCOIN_QT_TEST
   macx: CONFIG -= app_bundle
 }
@@ -504,7 +476,7 @@ macx:HEADERS += src/qt/macdockiconhandler.h src/qt/macnotificationhandler.h
 macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm src/qt/macnotificationhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit -framework CoreServices
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
-macx:ICON = src/qt/res/icons/zoin.icns
+macx:ICON = src/qt/res/icons/zebra.icns
 macx:QMAKE_CFLAGS_THREAD += -pthread
 macx:QMAKE_LFLAGS_THREAD += -pthread
 macx:QMAKE_CXXFLAGS_THREAD += -pthread

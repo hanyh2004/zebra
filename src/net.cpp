@@ -1085,8 +1085,8 @@ void ThreadMapPort()
 #else
     /* miniupnpc 1.6 */
     int error = 0;
-    //devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0,  32 ,&error); //2.0
-    devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0 ,&error); //different version
+    devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0,  32 ,&error); //2.0
+    //devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0 ,&error); //different version
 
 #endif
 
