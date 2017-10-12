@@ -50,8 +50,11 @@ BDB_INCLUDE_PATH=/usr/local/opt/berkeley-db/include
 BDB_LIB_PATH=/usr/local/opt/berkeley-db/include/lib
 QRENCODE_INCLUDE_PATH=/usr/local/opt/qrencode/include
 QRENCODE_LIB_PATH=/usr/local/opt/qrencode/lib
-BOOST_INCLUDE_PATH=/usr/local/opt/boost@1.55/include
-BOOST_LIB_PATH=/usr/local/opt/boost@1.55/lib
+BOOST_INCLUDE_PATH=/usr/local/opt/install/include
+BOOST_LIB_PATH=/usr/local/opt/install/lib
+#BOOST_INCLUDE_PATH=/usr/local/opt/boost@1.55/include
+#BOOST_LIB_PATH=/usr/local/opt/boost@1.55/lib
+
 MINIUPNPC_INCLUDE_PATH=/usr/local/opt/miniupnpc/include
 MINIUPNPC_LIB_PATH=/usr/local/opt/miniupnpc/lib
 

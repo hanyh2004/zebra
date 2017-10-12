@@ -895,9 +895,9 @@ class CZerocoinEntry
 public:
     //public
     Bignum value;
-    int denomination;
+    int denomination; //币值
     //private
-    Bignum randomness;
+    Bignum randomness; //随机数--1024bit以上,最好3K bit以上
     Bignum serialNumber;
 
     bool IsUsed;

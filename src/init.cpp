@@ -321,7 +321,7 @@ std::string HelpMessage()
         "  -socks=<n>             " + _("Select the version of socks proxy to use (4-5, default: 5)") + "\n" +
         "  -tor=<ip:port>         " + _("Use proxy to reach tor hidden services (default: same as -proxy)") + "\n"
         "  -dns                   " + _("Allow DNS lookups for -addnode, -seednode and -connect") + "\n" +
-        "  -port=<port>           " + _("Listen for connections on <port> (default: 8255 or testnet: 18255)") + "\n" +
+        "  -port=<port>           " + _("Listen for connections on <port> (default: 8256 or testnet: 18256)") + "\n" +
         "  -maxconnections=<n>    " + _("Maintain at most <n> connections to peers (default: 125)") + "\n" +
         "  -addnode=<ip>          " + _("Add a node to connect to and attempt to keep the connection open") + "\n" +
         "  -connect=<ip>          " + _("Connect only to the specified node(s)") + "\n" +
@@ -914,6 +914,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         nStart = GetTimeMillis();
         do {
             try {
+                /** Unload database information */
                 UnloadBlockIndex();
                 delete pcoinsTip;
                 delete pcoinsdbview;
@@ -1039,7 +1040,7 @@ bool AppInit2(boost::thread_group& threadGroup)
             CWalletDB walletdb(pwalletMain->strWalletFile);
 			int lastCalculatedZCBlock = 0;
             walletdb.ReadCalculatedZCBlock(lastCalculatedZCBlock);
-            walletdb.ListPubCoin(listPubCoin);
+            walletdb.ListPubCoin(listPubCoin);// ListPubCoin(std::list<CZerocoinEntry>& listPubCoin);
 
             // RECURSIVE, SET NEW ID
             BOOST_FOREACH(const CZerocoinEntry& pubCoinItem, listPubCoin) {
@@ -1055,7 +1056,7 @@ bool AppInit2(boost::thread_group& threadGroup)
                 pubCoinTx.serialNumber = pubCoinItem.serialNumber;
                 pubCoinTx.nHeight = -1;
                 pubCoinTx.IsUsed = pubCoinItem.IsUsed;
-                //printf("- Reindex Pubcoin Id: %d Denomination: %d\n", pubCoinTx.id, pubCoinTx.denomination);
+                printf("- Reindex Pubcoin Id: %d Denomination: %d\n", pubCoinTx.id, pubCoinTx.denomination);
                 walletdb.WriteZerocoinEntry(pubCoinTx);
 			   }
 
