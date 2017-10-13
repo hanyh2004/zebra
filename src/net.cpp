@@ -1885,6 +1885,7 @@ instance_of_cnetcleanup;
 
 void RelayTransaction(const CTransaction& tx, const uint256& hash)
 {
+    printf("RelayTransaction:%s",tx.GetHash().GetHex().c_str());
     CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
     ss.reserve(10000);
     ss << tx;
@@ -1893,6 +1894,8 @@ void RelayTransaction(const CTransaction& tx, const uint256& hash)
 
 void RelayTransaction(const CTransaction& tx, const uint256& hash, const CDataStream& ss)
 {
+    printf("RelayTransaction->:%s",tx.GetHash().GetHex().c_str());
+
     CInv inv(MSG_TX, hash);
     {
         LOCK(cs_mapRelay);
@@ -1910,6 +1913,8 @@ void RelayTransaction(const CTransaction& tx, const uint256& hash, const CDataSt
     LOCK(cs_vNodes);
     BOOST_FOREACH(CNode* pnode, vNodes)
     {
+        printf("ndoename:%s",pnode->addrName.c_str());
+
         if(!pnode->fRelayTxes)
             continue;
         LOCK(pnode->cs_filter);

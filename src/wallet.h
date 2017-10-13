@@ -671,10 +671,14 @@ public:
         int nDepth = GetDepthInMainChain();
         if (nDepth >= 1)
             return true;
-        if (nDepth < 0)
+        if (nDepth < 0) {
+            printf("nDepth %d\n",nDepth);
             return false;
-        if (!bSpendZeroConfChange || !IsFromMe()) // using wtx's cached debit
+        }
+        if (!bSpendZeroConfChange || !IsFromMe())  {
+            printf("bSpendZeroConfChange:%d IsFromMe %d\n",bSpendZeroConfChange,IsFromMe());
             return false;
+        }// using wtx's cached debit
 
         // If no confirmations but it's from us, we can still
         // consider it confirmed if all dependencies are confirmed

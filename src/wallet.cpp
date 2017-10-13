@@ -874,6 +874,7 @@ void CWallet::ReacceptWalletTransactions()
 
 void CWalletTx::RelayWalletTransaction()
 {
+    printf("RelayWalletTransaction()");
     BOOST_FOREACH(const CMerkleTx& tx, vtxPrev)
     {
         // Important: versions of bitcoin before 0.8.6 had a bug that inserted
@@ -895,6 +896,8 @@ void CWalletTx::RelayWalletTransaction()
 
 void CWallet::ResendWalletTransactions()
 {
+    printf("ResendWalletTransactions()");
+
     // Do this infrequently and randomly to avoid giving away
     // that these are our transactions.
     static int64 nNextTime;
@@ -1714,15 +1717,20 @@ bool CWallet::CreateZerocoinSpendTransaction(int64 nValue, libzerocoin::CoinDeno
     {
         LOCK2(cs_main, cs_wallet);
         {
-            wtxNew.vin.clear();
-            wtxNew.vout.clear();
+            wtxNew.vin.clear();  //vector input
+            wtxNew.vout.clear(); //vector output
             //wtxNew.fFromMe = true;
 
             // Reserve a new key pair from key pool
             CPubKey vchPubKey;
             assert(reservekey.GetReservedKey(vchPubKey)); // should never fail, as we just unlocked
-            CScript scriptChange;
-            scriptChange.SetDestination(vchPubKey.GetID());
+            CScript scriptChange;///** Serialized script, used inside transaction inputs and outputs */
+            scriptChange.SetDestination(vchPubKey.GetID());/*
+    // Get the KeyID of this public key (hash of its serialization)
+    CKeyID GetID() const {
+        return CKeyID(Hash160(vch, vch+size()));
+    }
+    */
 
             CTxOut newTxOut(nValue, scriptChange);
 
@@ -1742,7 +1750,14 @@ bool CWallet::CreateZerocoinSpendTransaction(int64 nValue, libzerocoin::CoinDeno
             // Set up the Zerocoin Params object
             static libzerocoin::Params *ZCParams = new libzerocoin::Params(bnTrustedModulus);
 
+            /**
+ * @brief      Construct an Accumulator from a stream.
+ * @param p    An AccumulatorAndProofParams object containing global parameters
+ * @param d    the denomination of coins we are accumulating
+ * @throw      Zerocoin exception in case of invalid parameters
+ **/
             libzerocoin::Accumulator accumulator(ZCParams, denomination);
+
 
             // TODO: Create Zercoin spending transaction part
             // 1. Selection a private coin that doesn't use in wallet
@@ -1794,11 +1809,11 @@ bool CWallet::CreateZerocoinSpendTransaction(int64 nValue, libzerocoin::CoinDeno
             }
 
             if(!selectedPubcoin){
-                strFailReason = _("it has to have at least two mint coins with at least 7 confirmation in order to spend a coin");
+                strFailReason = _("[zerocoinItem.nHeight + 6 <= nBestHeight]it has to have at least two mint coins with at least 7 confirmation in order to spend a coin");
                 return false;
             }
 
-            // 2. Get pubcoin from the private coin
+            // 2. Get pubcoin from the private coin  zerocoinSelected.value is Bignum
             libzerocoin::PublicCoin pubCoinSelected(ZCParams, zerocoinSelected.value, denomination);
 
             // Now make sure the coin is valid.
@@ -1811,7 +1826,8 @@ bool CWallet::CreateZerocoinSpendTransaction(int64 nValue, libzerocoin::CoinDeno
             }
 
 
-            // 3. Compute Accomulator by yourself by getting at least 9 pubcoins from wallet, but it must not include the public coin of the selected private coin
+            // 3. Compute Accomulator by yourself by getting at least 9 pubcoins from wallet,
+            // but it must not include the public coin of the selected private coin
             int countUseablePubcoin = 0;
             BOOST_FOREACH(const CZerocoinEntry& zerocoinItem, listPubCoin){
                 // Count pubcoins in same block
@@ -2065,7 +2081,7 @@ bool CWallet::CommitZerocoinSpendTransaction(CWalletTx& wtxNew, CReserveKey& res
 {
     {
         LOCK2(cs_main, cs_wallet);
-        //printf("CommitZerocoinSpendTransaction:\n%s", wtxNew.ToString().c_str());
+        printf("CommitZerocoinSpendTransaction:\n%s", wtxNew.ToString().c_str());
         {
             // This is only to keep the database open to defeat the auto-flush for the
             // duration of this scope.  This is the only place where this optimization
@@ -2189,15 +2205,17 @@ string CWallet::MintZerocoin(CScript pubCoin, int64 nValue, CWalletTx& wtxNew, b
     return "";
 }
 
+
 string CWallet::SpendZerocoin(int64 nValue, libzerocoin::CoinDenomination denomination, CWalletTx& wtxNew, CBigNum& coinSerial, uint256& txHash, CBigNum& zcSelectedValue, bool& zcSelectedIsUsed)
 {
     // Check amount
     if (nValue <= 0)
         return _("Invalid amount");
 
-    CReserveKey reservekey(this);
+    CReserveKey reservekey(this);  ///** A key allocated from the key pool. */
 
-    if (IsLocked())
+
+    if (IsLocked())//auth failed
     {
         string strError = _("Error: Wallet locked, unable to create transaction!");
         printf("SpendZerocoin() : %s", strError.c_str());

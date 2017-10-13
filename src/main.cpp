@@ -1393,9 +1393,15 @@ int CMerkleTx::GetDepthInMainChainINTERNAL(CBlockIndex* &pindexRet) const
     return pindexBest->nHeight - pindex->nHeight + 1;
 }
 
+// Return depth of transaction in blockchain:
+// -1  : not in blockchain, and not in memory pool (conflicted transaction)
+//  0  : in memory pool, waiting to be included in a block
+// >=1 : this many blocks deep in the main chain
 int CMerkleTx::GetDepthInMainChain(CBlockIndex* &pindexRet) const
 {
     int nResult = GetDepthInMainChainINTERNAL(pindexRet);
+    printf("GetDepthInMainChainINTERNAL:%d", nResult);
+
     if (nResult == 0 && !mempool.exists(GetHash()))
         return -1; // Not in chain, not in mempool
 

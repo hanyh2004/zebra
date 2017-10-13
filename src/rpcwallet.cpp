@@ -1745,6 +1745,7 @@ Value spendzerocoin(const Array& params, bool fHelp)
     }
 
 
+    //rpc auth
     if (pwalletMain->IsLocked())
         throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Error: Please enter the wallet passphrase with walletpassphrase first.");
 
@@ -1759,7 +1760,7 @@ Value spendzerocoin(const Array& params, bool fHelp)
 
     if (strError != "")
         throw JSONRPCError(RPC_WALLET_ERROR, strError);
-
+//transaction id
     return wtx.GetHash().GetHex();
 
 }
