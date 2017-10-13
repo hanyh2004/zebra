@@ -874,15 +874,19 @@ void CWallet::ReacceptWalletTransactions()
 
 void CWalletTx::RelayWalletTransaction()
 {
-    printf("RelayWalletTransaction()");
+    printf("RelayWalletTransaction()\n");
     BOOST_FOREACH(const CMerkleTx& tx, vtxPrev)
     {
         // Important: versions of bitcoin before 0.8.6 had a bug that inserted
         // empty transactions into the vtxPrev, which will cause the node to be
         // banned when retransmitted, hence the check for !tx.vin.empty()
         if (!tx.IsCoinBase() && !tx.vin.empty())
-            if (tx.GetDepthInMainChain() == 0)
+            if (tx.GetDepthInMainChain() == 0) {
+                printf("RelayWalletTransaction:%s\n",tx.GetHash().GetHex().c_str());
+
                 RelayTransaction((CTransaction)tx, tx.GetHash());
+
+            }
     }
     if (!IsCoinBase())
     {
@@ -896,7 +900,7 @@ void CWalletTx::RelayWalletTransaction()
 
 void CWallet::ResendWalletTransactions()
 {
-    printf("ResendWalletTransactions()");
+    printf("ResendWalletTransactions()\n");
 
     // Do this infrequently and randomly to avoid giving away
     // that these are our transactions.
