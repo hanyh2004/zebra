@@ -874,7 +874,7 @@ void CWallet::ReacceptWalletTransactions()
 
 void CWalletTx::RelayWalletTransaction()
 {
-    printf("RelayWalletTransaction()\n");
+   // printf("RelayWalletTransaction()\n");
     BOOST_FOREACH(const CMerkleTx& tx, vtxPrev)
     {
         // Important: versions of bitcoin before 0.8.6 had a bug that inserted
@@ -900,17 +900,24 @@ void CWalletTx::RelayWalletTransaction()
 
 void CWallet::ResendWalletTransactions()
 {
-    printf("ResendWalletTransactions()\n");
+   // printf("ResendWalletTransactions()\n");
 
     // Do this infrequently and randomly to avoid giving away
     // that these are our transactions.
     static int64 nNextTime;
-    if (GetTime() < nNextTime)
+    if (GetTime() < nNextTime) {
+     //   printf("ResendWalletTransactions GetTime() < nNextTime():%l %l\n",GetTime(),nNextTime);
+
         return;
+
+    }
     bool fFirst = (nNextTime == 0);
     nNextTime = GetTime() + GetRand(30 * 60);
-    if (fFirst)
+    if (fFirst) {
+        printf("First\n");
         return;
+
+    }
 
     // Only do it if there's been a new block since last time
     static int64 nLastTime;
@@ -919,7 +926,7 @@ void CWallet::ResendWalletTransactions()
     nLastTime = GetTime();
 
     // Rebroadcast any of our txes that aren't in a block yet
-    printf("ResendWalletTransactions()\n");
+  //  printf("ResendWalletTransactions()\n");
     {
         LOCK(cs_wallet);
         // Sort them in chronological order

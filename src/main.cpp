@@ -38,7 +38,7 @@ set<CWallet*> setpwalletRegistered;
 
 CCriticalSection cs_main;
 
-CTxMemPool mempool;
+CTxMemPool mempool; //
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
